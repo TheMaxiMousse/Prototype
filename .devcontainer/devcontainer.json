@@ -6,10 +6,7 @@
             "terminal.integrated.shell.linux": "/bin/bash"
         },
         "vscode": {
-            "extensions": [
-                "esbenp.prettier-vscode",
-                "astro-build.astro-vscode"
-            ]
+            "extensions": ["esbenp.prettier-vscode", "astro-build.astro-vscode"]
         }
     },
     "postStartCommand": "npm update && npm install",
