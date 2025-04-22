@@ -3,13 +3,7 @@ import products from '../assets/products.json';
 import ProductCard from '../components/ProductCard.astro';
 import Main from '../layouts/Main.astro';
 ---
-<Main title="Welcome to ChocoMax!">
-    <header>
-        <h1>Welcome to ChocoMax!</h1>
-        <p>Your one-stop shop for all things chocolate.</p>
-        <p>Explore our wide range of chocolate products and find your favorite!</p>
-    </header>
-
+<Main title="ChocoMax">
     <section id="product-list">
         {products.map(product => (
         <ProductCard 
@@ -22,8 +16,10 @@ import Main from '../layouts/Main.astro';
 
 <style>
     #product-list {
+        align-items: center;
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
+        justify-content: center;
     }
 </style>
