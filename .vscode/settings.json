@@ -11,7 +11,7 @@
             {
                 "match": "\\.(js|ts|vue|json|css|scss|md|html)$",
                 "cmd": "npx prettier --write \"${file}\"",
-                "autoShowOutputPanel": "always"
+                "autoShowOutputPanel": "error"
             }
         ]
     },
