@@ -6,6 +6,15 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": false,
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "\\.(js|ts|vue|json|css|scss|md|html)$",
+                "cmd": "npx prettier --write \"${file}\"",
+                "autoShowOutputPanel": "always"
+            }
+        ]
+    },
     "[yaml]": {
         "editor.tabSize": 2
     }
