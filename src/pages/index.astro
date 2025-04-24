@@ -24,4 +24,11 @@ import Main from '../layouts/Main.astro';
         justify-content: center;
         width: 80%;
     }
+
+    @media screen and (width<=850px) {
+        #product-list {
+            gap: var(--spacing-small);
+            width: 100%;
+        }
+    }
 </style>
