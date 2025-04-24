@@ -1,27 +1,48 @@
 ---
 import '../styles/global.css';
+import Icon from "../components/Icon.astro";
 
 const { title } = Astro.props;
 ---
 
 <header>
-    <h1>Welcome to {title}!</h1>
-    <p>Your one-stop shop for all things chocolate.</p>
-    <p>Explore our wide range of chocolate products and find your favorite!</p>
+    <h1>{title}</h1>
+    <nav>
+        <ul>
+            <li><a href="/"><Icon icon="home" /></a></li>
+            <li><a href="/cart"><Icon icon="shopping-cart"></a></li>
+            <li><a href="/about"><Icon icon="info" /></a></li>
+            <li><a href="/contact"><Icon icon="mail" /></a></li>
+        </ul>
+    </nav>
 </header>
 
 <style>
     header {
-        align-self: center;
         display: flex;
-        flex-direction: column;
-        gap: var(--spacing-small);
-        text-align: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    ul {
+        display: flex;
+        gap: var(--spacing-medium);
+        list-style: none;
     }
 
+    header>*:first-child,
+    header>*:last-child {
+        margin: 0 var(--spacing-medium);
+    }
+    
     @media screen and (width<=850px) {
         header {
             gap: 0;
+        }
+        
+        header>*:first-child,
+        header>*:last-child {
+            margin: 0;
         }
     }
 </style>
