@@ -1,5 +1,7 @@
 name: Reusable Docker Image Build and Scan
 
+permissions: read-all
+
 on:
   workflow_call:
     inputs:
@@ -17,8 +19,6 @@ on:
         required: false
         type: string
         default: '.'
-
-permissions: {}
 
 jobs:
   build-and-scan:

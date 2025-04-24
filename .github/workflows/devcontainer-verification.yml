@@ -1,5 +1,9 @@
 name: Scan Devcontainer Image
 
+permissions:
+  actions: read
+  security-events: write
+
 on:
   push:
     branches:
@@ -10,10 +14,6 @@ on:
 jobs:
   scan-devcontainer:
     name: Scan Devcontainer Image
-
-    permissions:
-      actions: read
-      security-events: write
 
     uses: <your-username>/<your-repo>/.github/workflows/docker-image-verification.yml@main
     with:
