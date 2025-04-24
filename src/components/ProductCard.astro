@@ -15,10 +15,16 @@ const { product_name } = Astro.props;
 <style>
     .product-card {
         align-items: center;
-        border: 1px solid #888;
+        border: 2px solid #888;
         border-radius: var(--border-radius-small);
-        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-small);
         min-width: 300px;
         min-height: 300px;
+    }
+
+    .product-card > * {
+        text-align: center;
     }
 </style>
