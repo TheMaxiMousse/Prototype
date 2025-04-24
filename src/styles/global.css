@@ -1,9 +1,13 @@
 :root {
     color-scheme: light dark;
 
-    --border-radius-small: 0.4rem;
-    --border-radius-medium: 1.6rem;
-    --border-radius-large: 3.2rem;
+    --spacing-small: 0.4rem;
+    --spacing-medium: 1.6rem;
+    --spacing-large: 3.2rem;
+
+    --border-radius-small: 16px;
+    --border-radius-medium: 32px;
+    --border-radius-large: 64px;
 }
 
 * {

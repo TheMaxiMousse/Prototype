@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const { title } = Astro.props;
 
 const baseYear = 2024;
@@ -15,7 +17,7 @@ const yearString = currentYear === baseYear ? baseYear.toString() : `${baseYear}
     footer {
         align-self: center;
         display: flex;
-        gap: 16px;
+        gap: var(--spacing-small);
     }
 
     @media screen and (width<=850px) {

@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 import products from '../assets/products.json';
 import ProductCard from '../components/ProductCard.astro';
 import Main from '../layouts/Main.astro';
@@ -19,7 +20,7 @@ import Main from '../layouts/Main.astro';
         align-items: center;
         display: flex;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: var(--spacing-medium);
         justify-content: center;
         width: 80%;
     }

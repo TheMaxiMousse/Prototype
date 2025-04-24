@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const { product_id } = Astro.props;
 const { product_name } = Astro.props;
 ---
@@ -13,8 +15,7 @@ const { product_name } = Astro.props;
 <style>
     .product-card {
         align-items: center;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
+        border: 1px solid #888;
         border-radius: var(--border-radius-small);
         padding: 16px;
         min-width: 300px;
