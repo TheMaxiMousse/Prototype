@@ -1,8 +1,7 @@
 name: Scan Devcontainer Image
 
 permissions:
-  actions: read
-  security-events: write
+  contents: read
 
 on:
   push:
