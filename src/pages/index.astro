@@ -3,13 +3,15 @@ import '../styles/global.css';
 import products from '../assets/products.json';
 import ProductCard from '../components/ProductCard.astro';
 import Main from '../layouts/Main.astro';
+
+import { SITE_NAME } from '../config.js';
 ---
-<Main title="ChocoMax">
+<Main title=`Welcome to ${SITE_NAME}!`>
     <section id="product-list">
         {products.map(product => (
-        <ProductCard 
-            product_id={product.product_id} 
-            product_name={product.product_name} 
+        <ProductCard
+            product_id={product.product_id}
+            product_name={product.product_name}
         />
         ))}
     </section>
