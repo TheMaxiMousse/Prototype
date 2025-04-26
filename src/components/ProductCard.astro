@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+const { product_id } = Astro.props;
+const { product_name } = Astro.props;
+---
+
+<Fragment>
+    <div class="product-card" style=`background-image: url("../src/assets/product/${product_id}.png");`>
+        <h1>{product_name}</h1>
+    </div>
+</Fragment>
+
+<style>
+    :root {
+        --card-size-wide: 350px;
+        --card-size-narrow: calc(var(--card-size-wide) / 2);
+    }
+
+    .product-card {
+        align-items: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: var(--border-radius-small);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        min-width: var(--card-size-wide);
+        min-height: var(--card-size-wide);
+    }
+    
+    .product-card > * {
+        background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
+        border-radius: inherit;
+        overflow: hidden;
+        padding: var(--spacing-small);
+        text-align: center;
+        width: 100%;
+    }
+
+    @media screen and (width<=850px) {
+        h1 {
+            font-size: 0.75rem;
+        }
+
+        .product-card {
+            min-width: var(--card-size-narrow);
+            min-height: var(--card-size-narrow);
+        }
+    }
+</style>

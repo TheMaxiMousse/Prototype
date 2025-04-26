@@ -1,6 +1,11 @@
 ---
 name: Lint
 
+permissions:
+  contents: read
+  packages: read
+  statuses: write
+
 on:
   push:
     branches:
@@ -8,17 +13,10 @@ on:
       - master
   pull_request: null
 
-permissions: {}
-
 jobs:
   build:
     name: Lint
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: read
-      statuses: write
 
     steps:
       - name: Checkout code
@@ -31,3 +29,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false
+          FILTER_REGEX_EXCLUDE: '(.devcontainer/Dockerfile|.github/pull_request_template.md|.github/ISSUE_TEMPLATE/*.md)'

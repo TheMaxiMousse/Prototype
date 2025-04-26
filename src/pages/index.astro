@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+import products from '../assets/products.json';
+import ProductCard from '../components/ProductCard.astro';
+import Main from '../layouts/Main.astro';
+---
+<Main title="ChocoMax">
+    <section id="product-list">
+        {products.map(product => (
+        <ProductCard 
+            product_id={product.product_id} 
+            product_name={product.product_name} 
+        />
+        ))}
+    </section>
+</Main>
+
+<style>
+    #product-list {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-medium);
+        justify-content: center;
+        width: 80%;
+    }
+
+    @media screen and (width<=850px) {
+        #product-list {
+            gap: var(--spacing-small);
+            width: 100%;
+        }
+    }
+</style>
