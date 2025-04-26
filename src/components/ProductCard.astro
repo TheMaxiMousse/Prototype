@@ -58,7 +58,7 @@ const { product_name } = Astro.props;
         width: 100%;
     }
 
-    .product-card > h1 {
+    .product-card-content > h1 {
         padding: var(--spacing-small);
     }
 
@@ -92,6 +92,10 @@ const { product_name } = Astro.props;
         max-height: calc(2rem + var(--spacing-small));
         opacity: 1;
         transition-delay: 0.05s;
+    }
+
+    .product-card:hover .product-card-content > h1 {
+        padding: calc(var(--spacing-small) / 2);
     }
 
     .product-card-actions button:hover {
