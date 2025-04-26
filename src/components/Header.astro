@@ -23,7 +23,7 @@ const { title } = Astro.props;
         justify-content: space-between;
         width: 100%;
     }
-    
+
     ul {
         display: flex;
         gap: var(--spacing-medium);
@@ -34,12 +34,12 @@ const { title } = Astro.props;
     header>*:last-child {
         margin: 0 var(--spacing-medium);
     }
-    
+
     @media screen and (width<=850px) {
         header {
             gap: 0;
         }
-        
+
         header>*:first-child,
         header>*:last-child {
             margin: 0;
