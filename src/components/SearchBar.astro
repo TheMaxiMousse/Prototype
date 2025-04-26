@@ -1,0 +1,46 @@
+---
+const { placeholder } = Astro.props;
+---
+
+<div class="search-bar">
+    <input type="text" placeholder={placeholder} />
+    <button>Search</button>
+</div>
+
+<style>
+    input {
+        padding: var(--spacing-small);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    button {
+        padding: var(--spacing-small);
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .search-bar {
+        display: flex;
+        flex: 1;
+        width: 100%;
+    }
+
+    .search-bar input {
+        min-width: var(--card-size-wide);
+    }
+
+    @media screen and (width<=850px) {
+        .search-bar input {
+            flex: 1;
+            min-width: 0;
+        }
+    }
+</style>
