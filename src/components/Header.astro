@@ -9,10 +9,10 @@ const { title } = Astro.props;
     <h1>{title}</h1>
     <nav>
         <ul>
-            <li><a href="/"><Icon icon="home" /></a></li>
-            <li><a href="/cart"><Icon icon="shopping-cart"></a></li>
-            <li><a href="/about"><Icon icon="info" /></a></li>
-            <li><a href="/contact"><Icon icon="mail" /></a></li>
+            <li><a href="index.html"><Icon icon="home" /></a></li>
+            <li><a href="cart.html"><Icon icon="shopping-cart"></a></li>
+            <li><a href="about.html"><Icon icon="info" /></a></li>
+            <li><a href="contact.html"><Icon icon="mail" /></a></li>
         </ul>
     </nav>
 </header>
@@ -23,7 +23,7 @@ const { title } = Astro.props;
         justify-content: space-between;
         width: 100%;
     }
-    
+
     ul {
         display: flex;
         gap: var(--spacing-medium);
@@ -34,12 +34,12 @@ const { title } = Astro.props;
     header>*:last-child {
         margin: 0 var(--spacing-medium);
     }
-    
+
     @media screen and (width<=850px) {
         header {
             gap: 0;
         }
-        
+
         header>*:first-child,
         header>*:last-child {
             margin: 0;

@@ -1,0 +1,20 @@
+---
+import Main from '../layouts/Main.astro';
+
+import { SITE_NAME } from '../config.js';
+---
+
+<Main title=`${SITE_NAME} - Your Cart`>
+    <h1>Your Cart</h1>
+    <p>Your cart is currently empty.</p>
+    <p>Start shopping to add items to your cart!</p>
+    <a href="/">Go to Shop</a>
+</Main>
+
+<style>
+    a {
+        text-decoration: none;
+        color: var(--color-primary);
+        font-weight: bold;
+    }
+</style>
