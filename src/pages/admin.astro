@@ -78,10 +78,10 @@ orders.forEach(order => {
         </span>
         <span id="income">
             <h2>Estimated Gross Income</h2>
-            <p>Total Gross Income: {orders.reduce((total, order) => total + order.total_price, 0)}</p>
-            <p>Average Order Value: {orders.length ? (orders.reduce((total, order) => total + order.total_price, 0) / orders.length).toFixed(2) : 0}</p>
-            <p>Number of Orders: {orders.length}</p>
-            <p>Number of Customers: {new Set(orders.map(order => order.customer_name)).size}</p>
+            <h3>Total Gross Income: {orders.reduce((total, order) => total + order.total_price, 0)}</h3>
+            <h3>Average Order Value: {orders.length ? (orders.reduce((total, order) => total + order.total_price, 0) / orders.length).toFixed(2) : 0}</h3>
+            <h3>Number of Orders: {orders.length}</h3>
+            <h3>Number of Customers: {new Set(orders.map(order => order.customer_name)).size}</h3>
         </span>
     </div>
 </Main>
@@ -102,7 +102,7 @@ orders.forEach(order => {
     }
 
     .comment-card {
-        background-color: #111;
+        background-color: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
         border-radius: var(--border-radius-small);
         gap: var(--spacing-small);
         padding: var(--spacing-small);
@@ -115,7 +115,7 @@ orders.forEach(order => {
 
     .order-card {
         align-items: center;
-        background-color: #111;
+        background-color: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
         border-radius: var(--border-radius-small);
         display: grid;
         grid-template:
@@ -147,11 +147,17 @@ orders.forEach(order => {
     }
 
     #admin-panel > span {
-        background-color: #888;
+        background-color: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
         border-radius: var(--border-radius-large);
         overflow-y: auto;
         padding: var(--spacing-medium);
         max-height: 40svh;
+    }
+
+    #income {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-small);
     }
 
     #comments {
@@ -169,8 +175,11 @@ orders.forEach(order => {
 
     /* Pseudo-classes */
 
+    tbody>tr:hover,
+    .comment-card:hover,
+    .order-card:hover,
     #admin-panel > span:hover {
-        background-color: #aaa;
+        background-color: light-dark(rgb(0 0 0 / 0.2), rgb(255 255 255 / 0.2));
     }
 
     tr:not(:last-child) {
