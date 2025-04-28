@@ -54,9 +54,12 @@ orders.forEach(order => {
                     <span style="grid-area: order-id;">#{order.order_id}</span>
                     <span style="grid-area: order-date;">{order.date}</span>
                     <span style="grid-area: customer-name;">Customer: {order.customer_name}</span>
-                    <ul style="grid-area: order-products;">{order.order.map(product => (
-                        <li>{product.product_name}</li>
-                    ))}</ul>
+                    <span style="grid-area: order-products;">
+                        <span>Order:</span>
+                        <ul class="order-products">{order.order.map(product => (
+                            <li>{product.product_name}</li>
+                        ))}</ul>
+                    </span>
                     <span style="grid-area: transaction-status;">Transaction Status: {order.transaction_status}</span>
                 </div>
             ))}
@@ -95,6 +98,10 @@ orders.forEach(order => {
         text-align: center;
     }
 
+    ul {
+        padding-left: var(--spacing-medium);
+    }
+
     .comment-card {
         background-color: #111;
         border-radius: var(--border-radius-small);
@@ -117,9 +124,10 @@ orders.forEach(order => {
             "customer-name customer-name" 1fr
             "order-products order-products" 1fr
             "transaction-status transaction-status" 1fr / 1fr 1fr;
+        height: clamp(var(--card-size-narrow), 200px, var(--card-size-wide));
+        overflow: auto;
         padding: 0 var(--spacing-small);
         width: clamp(250px, 30%, var(--card-size-wide));
-        height: clamp(var(--card-size-narrow), 200px, var(--card-size-wide));
     }
 
     .product-details {
