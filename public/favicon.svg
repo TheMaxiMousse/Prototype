@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-	<g fill="none" stroke="#a47764" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+	<g fill="none" stroke="#332421" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 		<path d="M9 16V8l3 5l3-5v8" />
 		<path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9" />
 	</g>
     <style>
         @media (prefers-color-scheme: dark) {
-            path { stroke: #332421; }
+            path { stroke: #a47764; }
         }
     </style>
 </svg>
