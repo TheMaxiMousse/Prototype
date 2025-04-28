@@ -1,12 +1,14 @@
 ---
 import '../styles/global.css';
 import Icon from "../components/Icon.astro";
+import SearchBar from "../components/SearchBar.astro";
 
 const { title } = Astro.props;
 ---
 
 <header>
     <h1>{title}</h1>
+    <SearchBar placeholder="Search for products..." />
     <nav>
         <ul>
             <li><a href="index.html"><Icon icon="home" /></a></li>
@@ -37,6 +39,8 @@ const { title } = Astro.props;
 
     @media screen and (width<=850px) {
         header {
+            align-items: center;
+            flex-direction: column;
             gap: 0;
         }
 
