@@ -47,32 +47,33 @@ const { placeholder } = Astro.props;
 </style>
 
 <script type="module" is:inline>
-let debounceTimeout;
+    let debounceTimeout;
 
-function handleSearch(input) {
-    const query = input.value.trim().toLowerCase();
-    const products = document.querySelectorAll('.product-card');
-    products.forEach(product => {
-        const name = product.querySelector('h1')?.textContent.toLowerCase() || '';
-        product.style.display = (query && name.includes(query)) ? 'flex' : (query ? 'none' : 'flex');
-    });
-}
+    function handleSearch(input) {
+        const query = input.value.trim().toLowerCase();
+        const products = document.querySelectorAll('.product-card');
 
-function initSearchBar() {
-    const input = document.querySelector('.search-bar input');
-    const button = document.querySelector('.search-bar button');
+        products.forEach(product => {
+            const name = product.querySelector('h1')?.textContent.toLowerCase() || '';
+            product.style.display = (query && name.includes(query)) ? 'flex' : (query ? 'none' : 'flex');
+        });
+    }
 
-    button.addEventListener('click', () => handleSearch(input));
+    function initSearchBar() {
+        const input = document.querySelector('.search-bar input');
+        const button = document.querySelector('.search-bar button');
 
-    input.addEventListener('input', () => {
-        clearTimeout(debounceTimeout);
-        debounceTimeout = setTimeout(() => handleSearch(input), 500);
-    });
-}
+        button.addEventListener('click', () => handleSearch(input));
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSearchBar);
-} else {
-    initSearchBar();
-}
+        input.addEventListener('input', () => {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => handleSearch(input), 500);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSearchBar);
+    } else {
+        initSearchBar();
+    }
 </script>
