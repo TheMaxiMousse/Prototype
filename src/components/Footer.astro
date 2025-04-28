@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 
-const { title } = Astro.props;
+import { SITE_NAME } from '../config.js';
 
 const baseYear = 2024;
 const currentYear = new Date().getFullYear();
@@ -9,7 +9,7 @@ const yearString = currentYear === baseYear ? baseYear.toString() : `${baseYear}
 ---
 
 <footer>
-    <span>{ title } &copy; {yearString}</span>
+    <span>{ SITE_NAME } &copy; {yearString}</span>
     <span>All rights reserved</span>
 </footer>
 
