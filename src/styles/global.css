@@ -1,9 +1,9 @@
 :root {
     color-scheme: light dark;
 
-    /* 
-    Define spacing sizes for margins, paddings, and gaps. 
-    Use these to ensure consistent spacing throughout the UI. 
+    /*
+    Define spacing sizes for margins, paddings, and gaps.
+    Use these to ensure consistent spacing throughout the UI.
      */
     --spacing-small: 0.4rem;
     --spacing-medium: 1.6rem;
@@ -17,7 +17,7 @@
     --border-radius-medium: 16px;
     --border-radius-large: 32px;
 
-    /* 
+    /*
     Product card sizes for different screen widths.
     Use these to ensure cards are responsive and maintain a consistent size across the UI.
      */
