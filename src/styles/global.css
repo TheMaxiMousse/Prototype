@@ -9,8 +9,8 @@
     --spacing-medium: 1.6rem;
     --spacing-large: 3.2rem;
 
-    /* 
-    Define border-radius sizes for rounded corners. 
+    /*
+    Define border-radius sizes for rounded corners.
     Use these to maintain a cohesive design for buttons, cards, and other UI elements.
      */
     --border-radius-small: 8px;
@@ -23,6 +23,15 @@
      */
     --card-size-wide: 350px;
     --card-size-narrow: calc(var(--card-size-wide) / 2);
+
+    /*
+    Define button styles for consistent appearance across the UI.
+    Use these variables to maintain a cohesive design for buttons.
+     */
+    --button-padding: var(--spacing-small);
+    --button-font-size: 1rem;
+    --button-border-radius: var(--border-radius-small);
+    --button-hover-brightness: 1.25;
 }
 
 * {
