@@ -4,7 +4,7 @@
     /*
     Define spacing sizes for margins, paddings, and gaps.
     Use these to ensure consistent spacing throughout the UI.
-    */
+     */
     --spacing-small: 0.4rem;
     --spacing-medium: 1.6rem;
     --spacing-large: 3.2rem;
@@ -12,7 +12,7 @@
     /*
     Define border-radius sizes for rounded corners.
     Use these to maintain a cohesive design for buttons, cards, and other UI elements.
-    */
+     */
     --border-radius-small: 8px;
     --border-radius-medium: 16px;
     --border-radius-large: 32px;
