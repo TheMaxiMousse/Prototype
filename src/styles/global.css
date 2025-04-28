@@ -4,18 +4,34 @@
     /* 
     Define spacing sizes for margins, paddings, and gaps. 
     Use these to ensure consistent spacing throughout the UI. 
-    */
+     */
     --spacing-small: 0.4rem;
     --spacing-medium: 1.6rem;
     --spacing-large: 3.2rem;
 
-    /* 
-    Define border-radius sizes for rounded corners. 
+    /*
+    Define border-radius sizes for rounded corners.
     Use these to maintain a cohesive design for buttons, cards, and other UI elements.
-    */
+     */
     --border-radius-small: 8px;
     --border-radius-medium: 16px;
     --border-radius-large: 32px;
+
+    /* 
+    Product card sizes for different screen widths.
+    Use these to ensure cards are responsive and maintain a consistent size across the UI.
+     */
+    --card-size-wide: 350px;
+    --card-size-narrow: calc(var(--card-size-wide) / 2);
+
+    /*
+    Define button styles for consistent appearance across the UI.
+    Use these variables to maintain a cohesive design for buttons.
+     */
+    --button-padding: var(--spacing-small);
+    --button-font-size: 1rem;
+    --button-border-radius: var(--border-radius-small);
+    --button-hover-brightness: 1.25;
 }
 
 * {

@@ -1,0 +1,46 @@
+---
+import Main from '../layouts/Main.astro';
+
+import { SITE_NAME } from '../config.js';
+---
+
+<Main title=`${SITE_NAME} - Contact Us`>
+    <h1>Contact Us</h1>
+    <p>If you have any questions, feel free to reach out!</p>
+    <form action="/submit" method="POST">
+        <input type="text" id="name" name="name" placeholder="Name" required>
+
+        <input type="email" id="email" name="email" placeholder="Email" required>
+
+        <textarea id="message" name="message" placeholder="Message" required></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+</Main>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-medium);
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, textarea {
+        padding: var(--spacing-small);
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius);
+    }
+
+    button {
+        padding: var(--spacing-small);
+        background-color: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+    }
+</style>
