@@ -40,6 +40,7 @@ orders.forEach(order => {
                             <td>{product.status == 'Available' ? "✅" : product.status}</td>
                             <td>{product.product_name}</td>
                             <td>{productOrders[product.product_id] || 0}</td>
+                            <td class="edit-product">✏️</td>
                         </tr>
                     ))}
                 </tbody>
@@ -100,6 +101,10 @@ orders.forEach(order => {
         gap: var(--spacing-small);
         padding: var(--spacing-small);
         width: 100%;
+    }
+
+    .edit-product {
+        cursor: pointer;
     }
 
     .order-card {
