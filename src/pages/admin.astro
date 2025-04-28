@@ -78,8 +78,8 @@ orders.forEach(order => {
         </span>
         <span id="income">
             <h2>Estimated Gross Income</h2>
-            <h3>Total Gross Income: {orders.reduce((total, order) => total + order.total_price, 0)}</h3>
-            <h3>Average Order Value: {orders.length ? (orders.reduce((total, order) => total + order.total_price, 0) / orders.length).toFixed(2) : 0}</h3>
+            <h3>Total Gross Income: CA${orders.reduce((total, order) => total + order.total_price, 0)}</h3>
+            <h3>Average Order Value: CA${orders.length ? (orders.reduce((total, order) => total + order.total_price, 0) / orders.length).toFixed(2) : 0}</h3>
             <h3>Number of Orders: {orders.length}</h3>
             <h3>Number of Customers: {new Set(orders.map(order => order.customer_name)).size}</h3>
         </span>
@@ -147,7 +147,7 @@ orders.forEach(order => {
     }
 
     #admin-panel > span {
-        background-color: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
+        background-color: light-dark(rgb(0 0 0 / 0.2), rgb(255 255 255 / 0.1));
         border-radius: var(--border-radius-large);
         overflow-y: auto;
         padding: var(--spacing-medium);
@@ -180,11 +180,11 @@ orders.forEach(order => {
     .comment-card:hover,
     .order-card:hover,
     #admin-panel > span:hover {
-        background-color: light-dark(rgb(0 0 0 / 0.2), rgb(255 255 255 / 0.2));
+        background-color: light-dark(rgb(0 0 0 / 0.3), rgb(255 255 255 / 0.2));
     }
 
     tr:not(:last-child) {
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid light-dark(#333, #ccc);
     }
 
 
