@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+---
+
+<div class="new-product-card">
+    <h1>Add New Product</h1>
+</div>
+
+<style>
+    .new-product-card {
+        align-items: center;
+        border-radius: var(--border-radius-small);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        border: 2px dashed #888;
+        min-width: var(--card-size);
+        min-height: var(--card-size);
+        position: relative;
+    }
+
+    .new-product-card > * {
+        background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
+        border-radius: inherit;
+        overflow: hidden;
+        text-align: center;
+        width: 100%;
+        padding: var(--spacing-small);
+    }
+
+    .new-product-card::before {
+        align-items: center;
+        background-color: rgb(255 255 255 / 0.1);
+        border-radius: inherit;
+        content: '+';
+        display: flex;
+        font-size: 10rem;
+        font-weight: bold;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    @media screen and (width <= 850px) {
+        h1 {
+            font-size: 0.75rem;
+        }
+    }
+</style>
