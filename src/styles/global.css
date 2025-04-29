@@ -21,8 +21,7 @@
     Product card sizes for different screen widths.
     Use these to ensure cards are responsive and maintain a consistent size across the UI.
      */
-    --card-size-wide: 350px;
-    --card-size-narrow: calc(var(--card-size-wide) / 2);
+    --card-size: clamp(175px, 30vw, 350px);
 
     /*
     Define button styles for consistent appearance across the UI.
