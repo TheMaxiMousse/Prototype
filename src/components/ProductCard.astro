@@ -1,12 +1,15 @@
 ---
-import '../styles/global.css';
+import '../styles/global.css'
 
-const { product_id } = Astro.props;
-const { product_name } = Astro.props;
+const { product_id } = Astro.props
+const { product_name } = Astro.props
 ---
 
 <Fragment>
-    <div class="product-card" style=`background-image: url("product/${product_id}.png");`>
+    <div
+        class="product-card"
+        style=`background-image: url("product/${product_id}.png");`
+    >
         <div class="product-card-content">
             <h1>{product_name}</h1>
             <div class="product-card-actions">

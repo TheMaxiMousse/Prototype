@@ -1,64 +1,66 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import '../styles/global.css'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
 
-import { SITE_NAME } from '../config.js';
-const { title } = Astro.props;
+import { SITE_NAME } from '../config.js'
+const { title } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{SITE_NAME} - {title}</title>
-	</head>
-	<body>
-		<img id="background" src="background.svg" fetchpriority="high" />
-		<Header title={title}></Header>
-		<slot />
-		<Footer title={title}></Footer>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{SITE_NAME} - {title}</title>
+    </head>
+    <body>
+        <img id="background" src="background.svg" fetchpriority="high" />
+        <Header title={title} />
+        <slot />
+        <Footer title={title} />
+    </body>
 </html>
 
 <style>
-	html,
-	body {
-		height: 100svh;
-		margin: 0;
-		width: 100%;
-	}
+    html,
+    body {
+        height: 100svh;
+        margin: 0;
+        width: 100%;
+    }
 
-	body {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-large);
-		background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
-		background-image:
-			radial-gradient(rgb(128 128 128 / 0.05) 1px, transparent 1px),
-			radial-gradient(rgb(128 128 128 / 0.1) 1px, transparent 1px);
-		background-position: 0 0, 5px 5px;
-		background-size: 10px 10px;
-	}
+    body {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-large);
+        background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
+        background-image:
+            radial-gradient(rgb(128 128 128 / 0.05) 1px, transparent 1px),
+            radial-gradient(rgb(128 128 128 / 0.1) 1px, transparent 1px);
+        background-position:
+            0 0,
+            5px 5px;
+        background-size: 10px 10px;
+    }
 
-	#background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
-		opacity: 0.2;
-	}
+    #background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        filter: blur(100px);
+        opacity: 0.2;
+    }
 
-	@media (prefers-color-scheme: light) {
-		#background {
-			opacity: 0.4;
-		}
-	}
+    @media (prefers-color-scheme: light) {
+        #background {
+            opacity: 0.4;
+        }
+    }
 </style>

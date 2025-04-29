@@ -1,15 +1,18 @@
 ---
-import '../styles/global.css';
+import '../styles/global.css'
 
-import { SITE_NAME } from '../config.js';
+import { SITE_NAME } from '../config.js'
 
-const baseYear = 2025;
-const currentYear = new Date().getFullYear();
-const yearString = currentYear === baseYear ? baseYear.toString() : `${baseYear}-${currentYear}`;
+const baseYear = 2025
+const currentYear = new Date().getFullYear()
+const yearString =
+    currentYear === baseYear
+        ? baseYear.toString()
+        : `${baseYear}-${currentYear}`
 ---
 
 <footer>
-    <span>{ SITE_NAME } &copy; {yearString}</span>
+    <span>{SITE_NAME} &copy; {yearString}</span>
     <span>Licensed under the MIT License</span>
 </footer>
 

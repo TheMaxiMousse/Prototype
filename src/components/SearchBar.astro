@@ -1,5 +1,5 @@
 ---
-const { placeholder } = Astro.props;
+const { placeholder } = Astro.props
 ---
 
 <div class="search-bar">
@@ -43,33 +43,35 @@ const { placeholder } = Astro.props;
 </style>
 
 <script type="module" is:inline>
-    let debounceTimeout;
+    let debounceTimeout
 
     function handleSearch(input) {
-        const query = input.value.trim().toLowerCase();
-        const products = document.querySelectorAll('.product-card');
+        const query = input.value.trim().toLowerCase()
+        const products = document.querySelectorAll('.product-card')
 
-        products.forEach(product => {
-            const name = product.querySelector('h1')?.textContent.toLowerCase() || '';
-            product.style.display = (query && name.includes(query)) ? 'flex' : (query ? 'none' : 'flex');
-        });
+        products.forEach((product) => {
+            const name =
+                product.querySelector('h1')?.textContent.toLowerCase() || ''
+            product.style.display =
+                query && name.includes(query) ? 'flex' : query ? 'none' : 'flex'
+        })
     }
 
     function initSearchBar() {
-        const input = document.querySelector('.search-bar input');
-        const button = document.querySelector('.search-bar button');
+        const input = document.querySelector('.search-bar input')
+        const button = document.querySelector('.search-bar button')
 
-        button.addEventListener('click', () => handleSearch(input));
+        button.addEventListener('click', () => handleSearch(input))
 
         input.addEventListener('input', () => {
-            clearTimeout(debounceTimeout);
-            debounceTimeout = setTimeout(() => handleSearch(input), 500);
-        });
+            clearTimeout(debounceTimeout)
+            debounceTimeout = setTimeout(() => handleSearch(input), 500)
+        })
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSearchBar);
+        document.addEventListener('DOMContentLoaded', initSearchBar)
     } else {
-        initSearchBar();
+        initSearchBar()
     }
 </script>
