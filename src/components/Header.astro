@@ -6,7 +6,7 @@ const { title } = Astro.props;
 ---
 
 <header>
-    <a href="index.html"><h1>{title}</h1></a>
+    <a href="index.html" title="Home"><h1>{title}</h1></a>
     <nav>
         <ul>
             <li><a href="admin.html" title="Admin Panel"><Icon icon="admin" /></a></li>
@@ -20,6 +20,7 @@ const { title } = Astro.props;
 
 <style>
     header {
+        background: linear-gradient(0deg, transparent 0%, light-dark(rgb(255 255 255 / 75%), rgb(0 0 0 / 50%)) 100%);
         display: flex;
         justify-content: space-between;
         white-space:nowrap;

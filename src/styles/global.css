@@ -42,7 +42,20 @@
     user-select: none;
 }
 
+a,
+svg {
+    color: light-dark(#000, #fff);
+}
+
 svg {
     width: 2rem;
     height: 2rem;
+}
+
+/* Pseudo-classes */
+
+a:hover,
+a:hover svg {
+    color: light-dark(#333, #ccc);
+    filter: drop-shadow(0 0 20px light-dark(#999, #777));
 }
