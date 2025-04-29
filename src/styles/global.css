@@ -1,5 +1,7 @@
 :root {
     color-scheme: light dark;
+    --color-success: green;
+    --color-error: red;
 
     /*
     Define spacing sizes for margins, paddings, and gaps.

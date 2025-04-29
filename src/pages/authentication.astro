@@ -1,14 +1,79 @@
 ---
+import '../styles/global.css'
+
 import Main from '../layouts/Main.astro'
-const test = Astro.cookies.set('loggedIn', 'true')
 ---
 
 <Main title="Authentication">
-    <h1>Authentication</h1>
-    <p>Authentication page content goes here.</p>
-    <p>This is a placeholder for the authentication page.</p>
-    <p>More details about authentication will be added later.</p>
+    <div class="authentication-container">
+        <section>
+            <h2>Login</h2>
+            <form action="#" id="login-form">
+                <input type="email" name="email" placeholder="Email" />
+                <input type="password" name="password" placeholder="Password" />
+                <span>
+                    <input type="checkbox" name="admin" />
+                    <label for="admin">Log in as an admin?</label>
+                </span>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </div>
 </Main>
+
+<style>
+    button[type='submit'] {
+        margin-top: var(--spacing-medium);
+        padding: var(--spacing-small);
+    }
+
+    button[type='submit'],
+    input {
+        font-size: large;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-small);
+    }
+
+    input {
+        padding: calc(2 * var(--spacing-small));
+        border-radius: var(--border-radius-small);
+        border: none;
+    }
+
+    section {
+        background-color: light-dark(rgb(0 0 0 / 0.2), rgb(255 255 255 / 0.1));
+        border-radius: var(--border-radius-large);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-medium);
+        padding: var(--spacing-medium);
+        width: clamp(350px, 50%, 500px);
+    }
+
+    .authentication-container {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        width: inherit;
+    }
+
+    /* Pseudo-classes */
+
+    input:user-valid {
+        background-color: var(--color-success);
+        border-color: var(--color-success);
+    }
+
+    input:user-invalid {
+        background-color: var(--color-error);
+        border-color: var(--color-error);
+    }
+</style>
 
 <script>
     if (document.cookie.includes('loggedIn=true')) {
