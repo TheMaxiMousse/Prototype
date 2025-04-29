@@ -1,0 +1,52 @@
+[
+    {
+        "comment_id": 2,
+        "product_id": 2,
+        "product_name": "Hazelnut Chocolate",
+        "customer_name": "Jane Smith",
+        "comment": "I love the combination of hazelnuts and chocolate. It's a perfect treat!",
+        "upvotes": 8,
+        "downvotes": 1,
+        "date": "2025-04-28"
+    },
+    {
+        "comment_id": 3,
+        "product_id": 3,
+        "product_name": "Pecan Nut Chocolate",
+        "customer_name": "Alice Johnson",
+        "comment": "The pecan nut chocolate is a delightful surprise. Highly recommend!",
+        "upvotes": 12,
+        "downvotes": 0,
+        "date": "2025-04-28"
+    },
+    {
+        "comment_id": 4,
+        "product_id": 4,
+        "product_name": "Almond Chocolate",
+        "customer_name": "Bob Brown",
+        "comment": "Almond chocolate is my favorite! The crunchiness of almonds adds a nice texture.",
+        "upvotes": 5,
+        "downvotes": 3,
+        "date": "2025-04-28"
+    },
+    {
+        "comment_id": 5,
+        "product_id": 5,
+        "product_name": "Macadamia Chocolate",
+        "customer_name": "Charlie Green",
+        "comment": "Macadamia chocolate is a bit too sweet for my taste, but still good.",
+        "upvotes": 4,
+        "downvotes": 2,
+        "date": "2025-04-28"
+    },
+    {
+        "comment_id": 1,
+        "product_id": 1,
+        "product_name": "Pure Chocolate",
+        "customer_name": "John Doe",
+        "comment": "This chocolate is amazing! The pure cocoa flavor is rich and satisfying.",
+        "upvotes": 10,
+        "downvotes": 2,
+        "date": "2025-04-06"
+    }
+]
