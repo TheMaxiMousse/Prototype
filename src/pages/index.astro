@@ -2,12 +2,14 @@
 import '../styles/global.css';
 import products from '../assets/products.json';
 import ProductCard from '../components/ProductCard.astro';
+import NewProduct from '../components/NewProduct.astro';
 import Main from '../layouts/Main.astro';
 
 import { SITE_NAME } from '../config.js';
 ---
 <Main title=`Welcome to ${SITE_NAME}!`>
     <section id="product-list">
+        <NewProduct />
         {products.map(product => (
         <ProductCard
             product_id={product.product_id}
