@@ -1,12 +1,16 @@
 ---
 import '../styles/global.css';
-import products from '../assets/products.json';
-import ProductCard from '../components/ProductCard.astro';
 import Main from '../layouts/Main.astro';
+import ProductCard from '../components/ProductCard.astro';
+import SearchBar from "../components/SearchBar.astro";
+import products from '../assets/products.json';
 
 import { SITE_NAME } from '../config.js';
 ---
 <Main title=`Welcome to ${SITE_NAME}!`>
+    <div id="search-product">
+        <SearchBar placeholder="Search for products..." />
+    </div>
     <section id="product-list">
         {products.map(product => (
         <ProductCard
@@ -18,6 +22,12 @@ import { SITE_NAME } from '../config.js';
 </Main>
 
 <style>
+    #search-product {
+        display: flex;
+        justify-content: center;
+        width: var(--card-size-wide);
+    }
+
     #product-list {
         align-items: center;
         display: flex;

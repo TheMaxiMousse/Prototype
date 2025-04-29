@@ -1,20 +1,17 @@
 ---
 import '../styles/global.css';
 import Icon from "../components/Icon.astro";
-import SearchBar from "../components/SearchBar.astro";
 
 const { title } = Astro.props;
 ---
 
 <header>
-    <h1>{title}</h1>
-    <SearchBar placeholder="Search for products..." />
+    <a href="index.html"><h1>{title}</h1></a>
     <nav>
         <ul>
-            <li><a href="index.html"><Icon icon="home" /></a></li>
-            <li><a href="cart.html"><Icon icon="shopping-cart"></a></li>
             <li><a href="about.html"><Icon icon="info" /></a></li>
             <li><a href="contact.html"><Icon icon="mail" /></a></li>
+            <li><a href="cart.html"><Icon icon="shopping-cart"></a></li>
         </ul>
     </nav>
 </header>
@@ -23,6 +20,7 @@ const { title } = Astro.props;
     header {
         display: flex;
         justify-content: space-between;
+        white-space:nowrap;
         width: 100%;
     }
 
