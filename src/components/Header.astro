@@ -9,9 +9,11 @@ const { title } = Astro.props;
     <a href="index.html"><h1>{title}</h1></a>
     <nav>
         <ul>
-            <li><a href="about.html"><Icon icon="info" /></a></li>
-            <li><a href="contact.html"><Icon icon="mail" /></a></li>
-            <li><a href="cart.html"><Icon icon="shopping-cart"></a></li>
+            <li><a href="admin.html" title="Admin Panel"><Icon icon="admin" /></a></li>
+            <li><a href="about.html" title="About"><Icon icon="info" /></a></li>
+            <li><a href="contact.html" title="Contact us"><Icon icon="mail" /></a></li>
+            <li><a href="cart.html" title="Your cart"><Icon icon="shopping-cart"></a></li>
+            <li><a href="authentication.html" title="Account"><Icon icon="user" /></a></li>
         </ul>
     </nav>
 </header>
