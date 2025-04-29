@@ -1,12 +1,9 @@
 ---
 import Main from '../layouts/Main.astro';
-
-import { SITE_NAME } from '../config.js';
-
 const test = Astro.cookies.set('loggedIn', 'true');
 ---
 
-<Main title=`${SITE_NAME} - Authentication`>
+<Main title="Authentication">
     <h1>Authentication</h1>
     <p>Authentication page content goes here.</p>
     <p>This is a placeholder for the authentication page.</p>

@@ -4,8 +4,6 @@ import products from '../assets/products.json';
 import orders from '../assets/orders.json';
 import comments from '../assets/comments.json';
 
-import { SITE_NAME } from '../config.js';
-
 // Count the number of orders for each product
 const productOrders: Record<number, number> = {};
 orders.forEach(order => {
@@ -20,7 +18,7 @@ orders.forEach(order => {
 });
 ---
 
-<Main title=`${SITE_NAME} - Admin Panel`>
+<Main title="Admin Panel">
     <div id="admin-panel">
         <span id="products">
             <h2>Products</h2>
