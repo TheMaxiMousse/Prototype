@@ -19,17 +19,14 @@ const { product_name } = Astro.props;
 
 <style>
     .product-card {
-        align-items: center;
-        background-position: center;
-        background-repeat: no-repeat;
         background-size: cover;
         border-radius: var(--border-radius-small);
         cursor: pointer;
         display: flex;
         flex-direction: column;
         justify-content: end;
-        min-width: var(--card-size-wide);
-        min-height: var(--card-size-wide);
+        min-width: var(--card-size);
+        min-height: var(--card-size);
         position: relative;
         overflow: hidden;
     }
@@ -96,11 +93,6 @@ const { product_name } = Astro.props;
     @media screen and (width <= 850px) {
         h1 {
             font-size: 0.75rem;
-        }
-
-        .product-card {
-            min-width: var(--card-size-narrow);
-            min-height: var(--card-size-narrow);
         }
     }
 </style>
