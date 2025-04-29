@@ -1,0 +1,23 @@
+---
+import Main from '../layouts/Main.astro';
+
+import { SITE_NAME } from '../config.js';
+
+const test = Astro.cookies.set('loggedIn', 'true');
+---
+
+<Main title=`${SITE_NAME} - Authentication`>
+    <h1>Authentication</h1>
+    <p>Authentication page content goes here.</p>
+    <p>This is a placeholder for the authentication page.</p>
+    <p>More details about authentication will be added later.</p>
+</Main>
+
+<script>
+    if (document.cookie.includes('loggedIn=true')) {
+        console.log('User is logged in, redirecting to dashboard...');
+        window.location.href = 'profile.html';
+    } else {
+        console.log('User is not logged in');
+    }
+</script>

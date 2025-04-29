@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Main from '../layouts/Main.astro';
+import NewProduct from '../components/NewProduct.astro';
 import ProductCard from '../components/ProductCard.astro';
 import SearchBar from "../components/SearchBar.astro";
 import products from '../assets/products.json';
@@ -12,6 +13,7 @@ import { SITE_NAME } from '../config.js';
         <SearchBar placeholder="Search for products..." />
     </div>
     <section id="product-list">
+        <NewProduct />
         {products.map(product => (
         <ProductCard
             product_id={product.product_id}
