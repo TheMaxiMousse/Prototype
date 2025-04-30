@@ -87,8 +87,12 @@ const { product_name } = Astro.props
 
     /* Pseudo-classes */
 
-    button:hover {
-        filter: brightness(var(--button-hover-brightness));
+    .like-button:hover {
+        filter: drop-shadow(0 0 20px #f00);
+    }
+
+    .add-to-cart-button:hover {
+        filter: drop-shadow(0 0 20px light-dark(#fff, #000));
     }
 
     .product-card:hover .like-button,
