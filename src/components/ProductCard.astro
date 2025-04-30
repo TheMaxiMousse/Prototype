@@ -21,7 +21,8 @@ const { product_name } = Astro.props
                     />
                 </button>
                 <button class="add-to-cart-button">
-                    <Icon icon="shopping-cart-plus" />
+                    <span><Icon icon="shopping-cart-plus" /></span>
+                    <span><Icon icon="check" /></span>
                 </button>
             </div>
             <h1>{product_name}</h1>
@@ -47,8 +48,13 @@ const { product_name } = Astro.props
         width: 100%;
     }
 
-    .add-to-cart-button {
+    .add-to-cart-button span:first-child,
+    .add-to-cart-button span:last-child {
         opacity: 0;
+    }
+
+    .add-to-cart-button span:last-child {
+        display: none;
     }
 
     .like-button {
@@ -96,7 +102,7 @@ const { product_name } = Astro.props
     }
 
     .product-card:hover .like-button,
-    .product-card:hover .add-to-cart-button {
+    .product-card:hover .add-to-cart-button span:first-child {
         opacity: 1;
     }
 
@@ -128,6 +134,30 @@ const { product_name } = Astro.props
             document.addEventListener('click', (event) => {
                 if (event.target.closest('.add-to-cart-button')) {
                     itemCount.textContent = Number(itemCount.textContent) + 1
+                }
+
+                const cartButton = event.target.closest('.add-to-cart-button')
+                if (cartButton) {
+                    const cartIcon =
+                        cartButton.querySelector('span:first-child')
+                    const checkIcon =
+                        cartButton.querySelector('span:last-child')
+
+                    cartIcon.style.display = 'none'
+                    cartIcon.style.opacity = 0
+                    checkIcon.style.opacity = 1
+                    checkIcon.style.display = 'flex'
+
+                    let timeout = 2000
+
+                    setTimeout(() => {
+                        checkIcon.style.display = 'none'
+                        cartIcon.style.display = 'flex'
+                    }, timeout + 250)
+
+                    setTimeout(() => {
+                        cartIcon.style.opacity = 1
+                    }, timeout + 500)
                 }
             })
         })
