@@ -22,7 +22,7 @@ const { product_name } = Astro.props
                 </button>
                 <button class="add-to-cart-button">
                     <span><Icon icon="shopping-cart-plus" /></span>
-                    <span><Icon icon="check" /></span>
+                    <span style="display: none;"><Icon icon="check" /></span>
                 </button>
             </div>
             <h1>{product_name}</h1>
@@ -51,10 +51,6 @@ const { product_name } = Astro.props
     .add-to-cart-button span:first-child,
     .add-to-cart-button span:last-child {
         opacity: 0;
-    }
-
-    .add-to-cart-button span:last-child {
-        display: none;
     }
 
     .like-button {
@@ -144,7 +140,6 @@ const { product_name } = Astro.props
                         cartButton.querySelector('span:last-child')
 
                     cartIcon.style.display = 'none'
-                    cartIcon.style.opacity = 0
                     checkIcon.style.opacity = 1
                     checkIcon.style.display = 'flex'
 
@@ -154,10 +149,6 @@ const { product_name } = Astro.props
                         checkIcon.style.display = 'none'
                         cartIcon.style.display = 'flex'
                     }, timeout + 250)
-
-                    setTimeout(() => {
-                        cartIcon.style.opacity = 1
-                    }, timeout + 500)
                 }
             })
         })
