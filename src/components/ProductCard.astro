@@ -51,23 +51,12 @@ const { product_name } = Astro.props
         overflow: hidden;
     }
 
-    .product-card-content {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
     .product-card > * {
         background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
         border-radius: inherit;
         overflow: hidden;
         text-align: center;
         width: 100%;
-    }
-
-    .product-card-content > h1 {
-        padding: var(--spacing-small);
     }
 
     .product-card-actions {
@@ -77,6 +66,17 @@ const { product_name } = Astro.props
         opacity: 0;
         overflow: hidden;
         width: 100%;
+    }
+
+    .product-card-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .product-card-content > h1 {
+        padding: var(--spacing-small);
     }
 
     .product-card:hover .product-card-actions {
