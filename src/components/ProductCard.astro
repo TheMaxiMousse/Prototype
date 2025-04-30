@@ -146,9 +146,13 @@ const { product_name } = Astro.props
                     let timeout = 2000
 
                     setTimeout(() => {
+                        checkIcon.style.opacity = 0
+                    }, timeout + 250)
+
+                    setTimeout(() => {
                         checkIcon.style.display = 'none'
                         cartIcon.style.display = 'flex'
-                    }, timeout + 250)
+                    }, timeout + 500)
                 }
             })
         })
