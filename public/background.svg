@@ -15,18 +15,19 @@
 
     <style>
         :root {
-            --gradient-a-start: #3245ff;
-            --gradient-a-end: #bc52ee;
-            --gradient-b-start: #d83333;
-            --gradient-b-end: #f041ff;
+            --gradient-a-start: #4E342E;  /* Dark chocolate */
+            --gradient-a-end: #8D6E63;    /* Milk chocolate */
+            --gradient-b-start: #D7CCC8;  /* Refined beige */
+            --gradient-b-end: #A1887F;    /* Elegant mocha */
         }
 
-        @media (prefers-color-scheme: light) {
+        @media (prefers-color-scheme: dark) {
             :root {
-                --gradient-a-start: #00c9ff;
-                --gradient-a-end: #92fe9d;
-                --gradient-b-start: #ff6a00;
-                --gradient-b-end: #ee0979;
+                /* Dark theme gradient colors for a warm, rich ambiance */
+                --gradient-a-start: #3E2723; /* Deep cocoa black */
+                --gradient-a-end: #6D4C41;   /* Hot chocolate */
+                --gradient-b-start: #5D4037; /* Intense brown */
+                --gradient-b-end: #8D6E63;   /* Soft milk mocha */
             }
         }
     </style>
