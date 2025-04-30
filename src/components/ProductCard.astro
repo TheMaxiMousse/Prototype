@@ -13,14 +13,31 @@ const { product_name } = Astro.props
         <div class="product-card-content">
             <h1>{product_name}</h1>
             <div class="product-card-actions">
-                <button class="product-more-info">More info</button>
-                <button class="product-add-cart">Add to cart</button>
+                <button>More info</button>
+                <button>Add to cart</button>
             </div>
         </div>
     </div>
 </Fragment>
 
 <style>
+    button {
+        border: none;
+        border-radius: var(--button-border-radius);
+        cursor: pointer;
+        font-size: var(--button-font-size);
+        padding: var(--button-padding);
+        width: 100%;
+    }
+
+    button:first-of-type {
+        background-color: light-dark(#409eff, #3178c6);
+    }
+
+    button:last-of-type {
+        background-color: light-dark(#41b883, #1f883d);
+    }
+
     .product-card {
         background-size: cover;
         border-radius: var(--border-radius-small);
@@ -62,38 +79,20 @@ const { product_name } = Astro.props
         width: 100%;
     }
 
-    .product-card-actions button {
-        border: none;
-        border-radius: var(--button-border-radius);
-        cursor: pointer;
-        font-size: var(--button-font-size);
-        padding: var(--button-padding);
-        width: 100%;
-    }
-
-    .product-card-actions button.product-more-info {
-        background-color: light-dark(#409eff, #3178c6);
-    }
-
-    .product-card-actions button.product-add-cart {
-        background-color: light-dark(#41b883, #1f883d);
-    }
-
     .product-card:hover .product-card-actions {
         max-height: calc(2rem + var(--spacing-small));
         opacity: 1;
         transition-delay: 0.05s;
     }
 
-    .product-card:hover .product-card-content > h1 {
-        padding: calc(var(--spacing-small) / 2);
-    }
+    /* Pseudo-classes */
 
-    .product-card-actions button:hover {
+    button:hover {
         filter: brightness(var(--button-hover-brightness));
     }
 
     @media screen and (width <= 850px) {
+        button,
         h1 {
             font-size: 0.75rem;
         }
