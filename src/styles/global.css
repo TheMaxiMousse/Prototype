@@ -1,5 +1,7 @@
 :root {
     color-scheme: light dark;
+
+    /* Color palette for the UI */
     --color-success: green;
     --color-error: red;
 
