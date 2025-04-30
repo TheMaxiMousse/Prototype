@@ -26,6 +26,7 @@ const { title } = Astro.props
             <li>
                 <a href="cart.html" title="Your cart">
                     <Icon icon="shopping-cart" />
+                    <span id="item-count">0</span>
                 </a>
                 <li>
                     <a href="authentication.html" title="Account">
@@ -66,6 +67,10 @@ const { title } = Astro.props
     header > *:first-child,
     header > *:last-child {
         margin: 0 var(--spacing-medium);
+    }
+
+    #item-count {
+        position: absolute;
     }
 
     @media screen and (width<=850px) {

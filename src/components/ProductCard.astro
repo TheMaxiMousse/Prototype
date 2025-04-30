@@ -27,96 +27,105 @@ const { product_name } = Astro.props
             <h1>{product_name}</h1>
         </div>
     </div>
-
-    <style>
-        button {
-            background: transparent;
-            border: none;
-            border-radius: var(--button-border-radius);
-            cursor: pointer;
-            font-size: var(--button-font-size);
-            padding: var(--button-padding);
-        }
-
-        h1 {
-            background-color: light-dark(
-                rgb(255 255 255 / 0.2),
-                rgb(0 0 0 / 0.2)
-            );
-            border-radius: var(--border-radius-small);
-            overflow: hidden;
-            text-align: center;
-            width: 100%;
-        }
-
-        .add-to-cart-button {
-            opacity: 0;
-        }
-
-        .like-button {
-            opacity: 0.1;
-        }
-
-        .product-card {
-            background-size: cover;
-            border-radius: var(--border-radius-small);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            min-width: var(--card-size);
-            height: var(--card-size);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card-actions {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .product-card-content {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .product-card-content > h1 {
-            padding: var(--spacing-small);
-        }
-
-        /* Pseudo-classes */
-
-        button:hover {
-            filter: brightness(var(--button-hover-brightness));
-        }
-
-        .product-card:hover .like-button,
-        .product-card:hover .add-to-cart-button {
-            opacity: 1;
-        }
-
-        .product-card:hover h1 {
-            background-color: light-dark(
-                rgb(255 255 255 / 0.5),
-                rgb(0 0 0 / 0.5)
-            );
-            border-radius: 0;
-        }
-
-        @media screen and (width <= 850px) {
-            h1 {
-                font-size: 0.75rem;
-            }
-        }
-
-        @media screen and (width <= 320px) {
-            .product-card {
-                min-width: 300px;
-                min-height: 300px;
-            }
-        }
-    </style>
 </Fragment>
+
+<style>
+    button {
+        background: transparent;
+        border: none;
+        border-radius: var(--button-border-radius);
+        cursor: pointer;
+        font-size: var(--button-font-size);
+        padding: var(--button-padding);
+    }
+
+    h1 {
+        background-color: light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2));
+        border-radius: var(--border-radius-small);
+        overflow: hidden;
+        text-align: center;
+        width: 100%;
+    }
+
+    .add-to-cart-button {
+        opacity: 0;
+    }
+
+    .like-button {
+        opacity: 0.1;
+    }
+
+    .product-card {
+        background-size: cover;
+        border-radius: var(--border-radius-small);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        min-width: var(--card-size);
+        height: var(--card-size);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-card-actions {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .product-card-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .product-card-content > h1 {
+        padding: var(--spacing-small);
+    }
+
+    /* Pseudo-classes */
+
+    button:hover {
+        filter: brightness(var(--button-hover-brightness));
+    }
+
+    .product-card:hover .like-button,
+    .product-card:hover .add-to-cart-button {
+        opacity: 1;
+    }
+
+    .product-card:hover h1 {
+        background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
+        border-radius: 0;
+    }
+
+    @media screen and (width <= 850px) {
+        h1 {
+            font-size: 0.75rem;
+        }
+    }
+
+    @media screen and (width <= 320px) {
+        .product-card {
+            min-width: 300px;
+            min-height: 300px;
+        }
+    }
+</style>
+
+<script type="module" is:inline>
+    if (!window.cartButtonScriptLoaded) {
+        window.cartButtonScriptLoaded = true
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const itemCount = document.getElementById('item-count')
+            document.addEventListener('click', (event) => {
+                if (event.target.closest('.add-to-cart-button')) {
+                    itemCount.textContent = Number(itemCount.textContent) + 1
+                }
+            })
+        })
+    }
+</script>
