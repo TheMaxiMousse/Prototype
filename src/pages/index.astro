@@ -54,7 +54,10 @@ import { SITE_NAME } from '../config.js'
 
 <script type="module" is:inline>
     function showAddProduct() {
-        if (document.cookie.includes('loggedIn=true')) {
+        if (
+            document.cookie.includes('loggedIn=true') &&
+            document.cookie.includes('isAdmin=true')
+        ) {
             document.getElementById('admin-add-product').style.display = 'flex'
         }
     }
