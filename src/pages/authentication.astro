@@ -12,7 +12,7 @@ import Main from '../layouts/Main.astro'
                 <input type="email" name="email" placeholder="Email" />
                 <input type="password" name="password" placeholder="Password" />
                 <span>
-                    <input type="checkbox" name="admin" />
+                    <input type="checkbox" name="admin" id="admin" />
                     <label for="admin">Log in as an admin?</label>
                 </span>
                 <button type="submit">Login</button>
@@ -75,11 +75,38 @@ import Main from '../layouts/Main.astro'
     }
 </style>
 
-<script>
+<script type="module" is:inline>
     if (document.cookie.includes('loggedIn=true')) {
         console.log('User is logged in, redirecting to dashboard...')
         window.location.href = 'profile.html'
     } else {
         console.log('User is not logged in')
     }
+
+    document
+        .getElementById('login-form')
+        .addEventListener('submit', (event) => {
+            event.preventDefault()
+
+            const email = this.email.value
+            const password = this.password.value
+            const isAdmin = this.admin.checked
+
+            if (email && password) {
+                console.log('User logged in successfully')
+                document.cookie = 'loggedIn=true; path=/'
+
+                if (isAdmin) {
+                    console.log('User is an admin')
+                    document.cookie = 'admin=true; path=/'
+                } else {
+                    console.log('User is not an admin')
+                    document.cookie = 'admin=false; path=/'
+                }
+
+                window.location.href = 'profile.html'
+            } else {
+                console.log('Invalid login credentials')
+            }
+        })
 </script>
