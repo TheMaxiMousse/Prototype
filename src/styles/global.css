@@ -1,6 +1,10 @@
 :root {
     color-scheme: light dark;
 
+    /* Color palette for the UI */
+    --color-success: green;
+    --color-error: red;
+
     /*
     Define spacing sizes for margins, paddings, and gaps.
     Use these to ensure consistent spacing throughout the UI.
