@@ -6,10 +6,10 @@
     --color-error: red;
     --color-warning: orange;
     --color-info: blue;
-    /* Dark chocolate, Deep cocoa black */
-    --color-primary: light-dark(#4e342e, #3e2723);
-    /* Milk chocolate, Hot chocolate */
-    --color-secondary: light-dark(#8d6e63, #6d4c41);
+    /* Elegant mocha, Deep cocoa black */
+    --color-primary: light-dark(#a1887f, #3e2723);
+    /* Refined beige, Hot chocolate */
+    --color-secondary: light-dark(#d7ccc8, #6d4c41);
 
     /*
     Define spacing sizes for margins, paddings, and gaps.
