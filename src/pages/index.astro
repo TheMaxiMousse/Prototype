@@ -1,25 +1,30 @@
 ---
-import '../styles/global.css';
-import Main from '../layouts/Main.astro';
-import NewProduct from '../components/NewProduct.astro';
-import ProductCard from '../components/ProductCard.astro';
-import SearchBar from "../components/SearchBar.astro";
-import products from '../assets/products.json';
+import '../styles/global.css'
+import Main from '../layouts/Main.astro'
+import NewProduct from '../components/NewProduct.astro'
+import ProductCard from '../components/ProductCard.astro'
+import SearchBar from '../components/SearchBar.astro'
+import products from '../assets/products.json'
 
-import { SITE_NAME } from '../config.js';
+import { SITE_NAME } from '../config.js'
 ---
+
 <Main title=`Welcome to ${SITE_NAME}!`>
     <div id="search-product">
         <SearchBar placeholder="Search for products..." />
     </div>
     <section id="product-list">
-        <NewProduct />
-        {products.map(product => (
-        <ProductCard
-            product_id={product.product_id}
-            product_name={product.product_name}
-        />
-        ))}
+        <div id="admin-add-product" style="display: none;">
+            <NewProduct />
+        </div>
+        {
+            products.map((product) => (
+                <ProductCard
+                    product_id={product.product_id}
+                    product_name={product.product_name}
+                />
+            ))
+        }
     </section>
 </Main>
 
@@ -46,3 +51,17 @@ import { SITE_NAME } from '../config.js';
         }
     }
 </style>
+
+<script type="module" is:inline>
+    function showAddProduct() {
+        if (document.cookie.includes('loggedIn=true')) {
+            document.getElementById('admin-add-product').style.display = 'flex'
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showAddProduct)
+    } else {
+        showAddProduct()
+    }
+</script>

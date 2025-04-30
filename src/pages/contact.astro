@@ -1,18 +1,23 @@
 ---
-import Main from '../layouts/Main.astro';
-
-import { SITE_NAME } from '../config.js';
+import Main from '../layouts/Main.astro'
 ---
 
-<Main title=`${SITE_NAME} - Contact Us`>
+<Main title="Contact Us">
     <h1>Contact Us</h1>
     <p>If you have any questions, feel free to reach out!</p>
-    <form action="/submit" method="POST">
-        <input type="text" id="name" name="name" placeholder="Name" required>
+    <form action="#" method="POST">
+        <input type="text" id="name" name="name" placeholder="Name" required />
 
-        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+        />
 
-        <textarea id="message" name="message" placeholder="Message" required></textarea>
+        <textarea id="message" name="message" placeholder="Message" required>
+        </textarea>
 
         <button type="submit">Send</button>
     </form>
@@ -29,7 +34,8 @@ import { SITE_NAME } from '../config.js';
         font-weight: bold;
     }
 
-    input, textarea {
+    input,
+    textarea {
         padding: var(--spacing-small);
         border: 1px solid var(--color-border);
         border-radius: var(--border-radius);

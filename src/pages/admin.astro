@@ -1,26 +1,24 @@
 ---
-import Main from '../layouts/Main.astro';
-import products from '../assets/products.json';
-import orders from '../assets/orders.json';
-import comments from '../assets/comments.json';
-
-import { SITE_NAME } from '../config.js';
+import Main from '../layouts/Main.astro'
+import products from '../assets/products.json'
+import orders from '../assets/orders.json'
+import comments from '../assets/comments.json'
 
 // Count the number of orders for each product
-const productOrders: Record<number, number> = {};
-orders.forEach(order => {
-    order.order.forEach(product => {
-        const productId: number = product.product_id;
+const productOrders: Record<number, number> = {}
+orders.forEach((order) => {
+    order.order.forEach((product) => {
+        const productId: number = product.product_id
         if (productOrders[productId]) {
-            productOrders[productId]++;
+            productOrders[productId]++
         } else {
-            productOrders[productId] = 1;
+            productOrders[productId] = 1
         }
-    });
-});
+    })
+})
 ---
 
-<Main title=`${SITE_NAME} - Admin Panel`>
+<Main title="Admin Panel">
     <div id="admin-panel">
         <span id="products">
             <h2>Products</h2>
@@ -34,54 +32,98 @@ orders.forEach(order => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((product, index) => (
-                        <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{product.status == 'Available' ? "✅" : product.status}</td>
-                            <td>{product.product_name}</td>
-                            <td>{productOrders[product.product_id] || 0}</td>
-                            <td class="edit-product">✏️</td>
-                        </tr>
-                    ))}
+                    {
+                        products.map((product, index) => (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>
+                                    {product.status == 'Available'
+                                        ? '✅'
+                                        : product.status}
+                                </td>
+                                <td>{product.product_name}</td>
+                                <td>
+                                    {productOrders[product.product_id] || 0}
+                                </td>
+                                <td class="edit-product">✏️</td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </span>
         <span>
             <h2>Current Orders</h2>
             <div id="orders">
-            {orders.map(order => (
-                <div class="order-card">
-                    <span style="grid-area: order-id;">#{order.order_id}</span>
-                    <span style="grid-area: order-date;">{order.date}</span>
-                    <span style="grid-area: customer-name;">Customer: {order.customer_name}</span>
-                    <span style="grid-area: order-products;">
-                        <span>Order:</span>
-                        <ul class="order-products">{order.order.map(product => (
-                            <li>{product.product_name}</li>
-                        ))}</ul>
-                    </span>
-                    <span style="grid-area: transaction-status;">Transaction Status: {order.transaction_status}</span>
-                </div>
-            ))}
+                {
+                    orders.map((order) => (
+                        <div class="order-card">
+                            <span style="grid-area: order-id;">
+                                #{order.order_id}
+                            </span>
+                            <span style="grid-area: order-date;">
+                                {order.date}
+                            </span>
+                            <span style="grid-area: customer-name;">
+                                Customer: {order.customer_name}
+                            </span>
+                            <span style="grid-area: order-products;">
+                                <span>Order:</span>
+                                <ul class="order-products">
+                                    {order.order.map((product) => (
+                                        <li>{product.product_name}</li>
+                                    ))}
+                                </ul>
+                            </span>
+                            <span style="grid-area: transaction-status;">
+                                Transaction Status: {order.transaction_status}
+                            </span>
+                        </div>
+                    ))
+                }
             </div>
         </span>
         <span id="comments">
             <h2>Latest Comments</h2>
-            {comments.map(comment => (
-                <div class="comment-card">
-                    <span>{comment.product_name}</span>
-                    <span>@{comment.customer_name}</span>
-                    <span>{comment.date}</span>
-                    <p>{comment.comment}</p>
-                </div>
-            ))}
+            {
+                comments.map((comment) => (
+                    <div class="comment-card">
+                        <span>{comment.product_name}</span>
+                        <span>@{comment.customer_name}</span>
+                        <span>{comment.date}</span>
+                        <p>{comment.comment}</p>
+                    </div>
+                ))
+            }
         </span>
         <span id="income">
             <h2>Estimated Gross Income</h2>
-            <h3>Total Gross Income: CA${orders.reduce((total, order) => total + order.total_price, 0)}</h3>
-            <h3>Average Order Value: CA${orders.length ? (orders.reduce((total, order) => total + order.total_price, 0) / orders.length).toFixed(2) : 0}</h3>
+            <h3>
+                Total Gross Income: CA${
+                    orders.reduce(
+                        (total, order) => total + order.total_price,
+                        0
+                    )
+                }
+            </h3>
+            <h3>
+                Average Order Value: CA${
+                    orders.length
+                        ? (
+                              orders.reduce(
+                                  (total, order) => total + order.total_price,
+                                  0
+                              ) / orders.length
+                          ).toFixed(2)
+                        : 0
+                }
+            </h3>
             <h3>Number of Orders: {orders.length}</h3>
-            <h3>Number of Customers: {new Set(orders.map(order => order.customer_name)).size}</h3>
+            <h3>
+                Number of Customers: {
+                    new Set(orders.map((order) => order.customer_name)).size
+                }
+            </h3>
         </span>
     </div>
 </Main>
@@ -119,10 +161,10 @@ orders.forEach(order => {
         border-radius: var(--border-radius-small);
         display: grid;
         grid-template:
-            "order-id order-date" 1fr
-            "customer-name customer-name" 1fr
-            "order-products order-products" 1fr
-            "transaction-status transaction-status" 1fr / 1fr 1fr;
+            'order-id order-date' 1fr
+            'customer-name customer-name' 1fr
+            'order-products order-products' 1fr
+            'transaction-status transaction-status' 1fr / 1fr 1fr;
         height: clamp(var(--card-size-narrow), 200px, var(--card-size-wide));
         overflow: auto;
         padding: 0 var(--spacing-small);
@@ -140,8 +182,8 @@ orders.forEach(order => {
         display: grid;
         gap: var(--spacing-medium);
         grid-template:
-            "products orders" 1fr
-            "comments income" 1fr / 1fr 1fr;
+            'products orders' 1fr
+            'comments income' 1fr / 1fr 1fr;
         height: 100%;
         width: 90%;
     }
@@ -176,7 +218,7 @@ orders.forEach(order => {
     /* Pseudo-classes */
 
     h3:hover,
-    tbody>tr:hover,
+    tbody > tr:hover,
     .comment-card:hover,
     .order-card:hover,
     #admin-panel > span:hover {
@@ -187,14 +229,13 @@ orders.forEach(order => {
         border-bottom: 1px solid light-dark(#333, #ccc);
     }
 
-
     @media screen and (width<=850px) {
         #admin-panel {
             grid-template:
-                "products" 1fr
-                "orders" 1fr
-                "comments" 1fr
-                "income" 1fr / 1fr;
+                'products' 1fr
+                'orders' 1fr
+                'comments' 1fr
+                'income' 1fr / 1fr;
             width: 95%;
         }
     }
