@@ -85,7 +85,7 @@ import Main from '../layouts/Main.astro'
 
     document
         .getElementById('login-form')
-        .addEventListener('submit', (event) => {
+        .addEventListener('submit', function (event) {
             event.preventDefault()
 
             const email = this.email.value
@@ -98,10 +98,10 @@ import Main from '../layouts/Main.astro'
 
                 if (isAdmin) {
                     console.log('User is an admin')
-                    document.cookie = 'admin=true; path=/'
+                    document.cookie = 'isAdmin=true; path=/'
                 } else {
                     console.log('User is not an admin')
-                    document.cookie = 'admin=false; path=/'
+                    document.cookie = 'isAdmin=false; path=/'
                 }
 
                 window.location.href = 'profile.html'
