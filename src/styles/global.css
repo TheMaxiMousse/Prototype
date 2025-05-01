@@ -107,7 +107,7 @@ a:hover svg {
     filter: drop-shadow(0 0 20px light-dark(#999, #777));
 }
 
-button:focus {
+button:focus-visible {
     background: var(--color-secondary);
 }
 
