@@ -105,6 +105,12 @@ const { product_name } = Astro.props
         background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
         border-radius: 0;
     }
+
+    @media screen and (width <= 850px) {
+        h1 {
+            font-size: 0.75rem;
+        }
+    }
 </style>
 
 <script type="module" is:inline>

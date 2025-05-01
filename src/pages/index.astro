@@ -32,7 +32,7 @@ import { SITE_NAME } from '../config.js'
     #search-product {
         display: flex;
         justify-content: center;
-        width: var(--card-size);
+        width: clamp(320px, var(--card-size), 100svw);
     }
 
     #product-list {
