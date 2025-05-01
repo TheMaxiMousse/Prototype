@@ -6,9 +6,7 @@
     --color-error: red;
     --color-warning: orange;
     --color-info: blue;
-    /* Elegant mocha, Deep cocoa black */
     --color-primary: light-dark(#a1887f, #3e2723);
-    /* Refined beige, Hot chocolate */
     --color-secondary: light-dark(#d7ccc8, #6d4c41);
 
     /*
