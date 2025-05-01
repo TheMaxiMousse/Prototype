@@ -32,7 +32,7 @@ const { product_name } = Astro.props
 
 <style>
     button {
-        background: transparent;
+        background: none;
         border: none;
         border-radius: var(--button-border-radius);
         cursor: pointer;
@@ -88,6 +88,10 @@ const { product_name } = Astro.props
     }
 
     /* Pseudo-classes */
+
+    button:hover {
+        background: none;
+    }
 
     .like-button:hover {
         filter: drop-shadow(0 0 20px #f00);
