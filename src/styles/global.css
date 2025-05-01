@@ -29,7 +29,7 @@
     Product card sizes for different screen widths.
     Use these to ensure cards are responsive and maintain a consistent size across the UI.
      */
-    --card-size: clamp(175px, 30vw, 350px);
+    --card-size: clamp(175px, 100vw, 350px);
 }
 
 * {
