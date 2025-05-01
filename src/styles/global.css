@@ -106,9 +106,7 @@ button:hover {
 }
 
 input:focus {
-    border: none;
-    border-bottom: 1px solid var(--color-primary);
-    border-radius: 0;
+    border-color: var(--color-secondary);
 }
 
 input:user-valid {
