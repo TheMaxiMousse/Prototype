@@ -57,19 +57,37 @@ svg {
 }
 
 button {
-    padding: var(--spacing-small);
     background-color: var(--color-primary);
     border: none;
-    border-radius: var(--border-radius-small);
+    border-radius: var(--button-border-radius);
     cursor: pointer;
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+}
+
+button[type='submit'] {
+    margin-top: var(--spacing-medium);
+    font-size: large;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-small);
 }
 
 input {
     background: transparent;
     border: 1px solid var(--color-primary);
-    border-radius: 4px;
-    padding: var(--spacing-small);
+    border-radius: var(--border-radius-small);
     flex: 1;
+    font-size: large;
+    padding: var(--spacing-small);
+    padding: calc(1.5 * var(--spacing-small));
+}
+
+ul {
+    list-style: none;
 }
 
 svg {
@@ -79,12 +97,36 @@ svg {
 
 /* Pseudo-classes */
 
+*:focus {
+    outline: none;
+}
+
 a:hover,
 a:hover svg {
     color: light-dark(#333, #ccc);
     filter: drop-shadow(0 0 20px light-dark(#999, #777));
 }
 
+button:focus {
+    background: var(--color-secondary);
+}
+
 button:hover {
     background-color: var(--color-secondary);
+}
+
+input:focus {
+    border: none;
+    border-bottom: 1px solid var(--color-primary);
+    border-radius: 0;
+}
+
+input:user-valid {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+input:user-invalid {
+    background-color: var(--color-error);
+    border-color: var(--color-error);
 }
