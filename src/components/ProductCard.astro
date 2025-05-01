@@ -122,39 +122,36 @@ const { product_name } = Astro.props
 </style>
 
 <script type="module" is:inline>
-    if (!window.cartButtonScriptLoaded) {
-        window.cartButtonScriptLoaded = true
+    if (window.cartButtonScriptLoaded) return
+    window.cartButtonScriptLoaded = true
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const itemCount = document.getElementById('item-count')
-            document.addEventListener('click', (event) => {
-                if (event.target.closest('.add-to-cart-button')) {
-                    itemCount.textContent = Number(itemCount.textContent) + 1
-                }
+    document.addEventListener('DOMContentLoaded', () => {
+        const itemCount = document.getElementById('item-count')
+        document.addEventListener('click', (event) => {
+            const cartButton = event.target.closest('.add-to-cart-button')
+            if (!cartButton) return
 
-                const cartButton = event.target.closest('.add-to-cart-button')
-                if (cartButton) {
-                    const cartIcon =
-                        cartButton.querySelector('span:first-child')
-                    const checkIcon =
-                        cartButton.querySelector('span:last-child')
+            // Update item count
+            if (itemCount) {
+                const count = Number(itemCount.textContent)
+                itemCount.textContent = count + 1
+            }
 
-                    cartIcon.style.display = 'none'
-                    checkIcon.style.opacity = 1
-                    checkIcon.style.display = 'flex'
+            // Toggle icons
+            const cartIcon = cartButton.querySelector('span:first-child')
+            const checkIcon = cartButton.querySelector('span:last-child')
+            if (!cartIcon || !checkIcon) return
 
-                    let timeout = 2000
+            cartIcon.style.display = 'none'
+            checkIcon.style.display = 'flex'
+            checkIcon.style.opacity = 1
 
-                    setTimeout(() => {
-                        checkIcon.style.opacity = 0
-                    }, timeout + 250)
-
-                    setTimeout(() => {
-                        checkIcon.style.display = 'none'
-                        cartIcon.style.display = 'flex'
-                    }, timeout + 500)
-                }
-            })
+            const timeout = 2000
+            setTimeout(() => (checkIcon.style.opacity = 0), timeout + 250)
+            setTimeout(() => {
+                checkIcon.style.display = 'none'
+                cartIcon.style.display = 'flex'
+            }, timeout + 500)
         })
-    }
+    })
 </script>
