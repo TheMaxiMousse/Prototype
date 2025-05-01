@@ -47,7 +47,15 @@ import { SITE_NAME } from '../config.js'
     @media screen and (width<=850px) {
         #product-list {
             gap: var(--spacing-small);
+            height: 100%;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
             width: 100%;
+        }
+
+        #product-list > * {
+            scroll-snap-align: start;
         }
     }
 </style>

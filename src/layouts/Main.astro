@@ -58,12 +58,18 @@ const { title } = Astro.props
         height: 100%;
         z-index: -1;
         filter: blur(100px);
-        opacity: 0.2;
+        opacity: 0.3;
     }
 
     @media (prefers-color-scheme: light) {
         #background {
-            opacity: 0.4;
+            opacity: 0.5;
+        }
+    }
+
+    @media screen and (width<=850px) {
+        body {
+            gap: var(--spacing-small);
         }
     }
 </style>

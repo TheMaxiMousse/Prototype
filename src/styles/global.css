@@ -4,6 +4,10 @@
     /* Color palette for the UI */
     --color-success: green;
     --color-error: red;
+    --color-warning: orange;
+    --color-info: blue;
+    --color-primary: light-dark(#a1887f, #3e2723);
+    --color-secondary: light-dark(#d7ccc8, #6d4c41);
 
     /*
     Define spacing sizes for margins, paddings, and gaps.
@@ -31,6 +35,7 @@
     Define button styles for consistent appearance across the UI.
     Use these variables to maintain a cohesive design for buttons.
      */
+    --button-background: var(--color-primary);
     --button-padding: var(--spacing-small);
     --button-font-size: 1rem;
     --button-border-radius: var(--border-radius-small);
@@ -51,6 +56,22 @@ svg {
     color: light-dark(#000, #fff);
 }
 
+button {
+    padding: var(--spacing-small);
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+}
+
+input {
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+    padding: var(--spacing-small);
+    flex: 1;
+}
+
 svg {
     width: 2rem;
     height: 2rem;
@@ -62,4 +83,8 @@ a:hover,
 a:hover svg {
     color: light-dark(#333, #ccc);
     filter: drop-shadow(0 0 20px light-dark(#999, #777));
+}
+
+button:hover {
+    background-color: var(--color-secondary);
 }

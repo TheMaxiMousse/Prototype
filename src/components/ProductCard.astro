@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import Icon from '../components/Icon.astro'
 
 const { product_id } = Astro.props
 const { product_name } = Astro.props
@@ -11,31 +12,49 @@ const { product_name } = Astro.props
         style=`background-image: url("product/${product_id}.png");`
     >
         <div class="product-card-content">
-            <h1>{product_name}</h1>
             <div class="product-card-actions">
-                <button>More info</button>
-                <button>Add to cart</button>
+                <button class="like-button">
+                    <Icon
+                        icon={Math.floor((Math.random() * 2) % 2) == 0
+                            ? 'heart'
+                            : 'heart-filled'}
+                    />
+                </button>
+                <button class="add-to-cart-button">
+                    <span><Icon icon="shopping-cart-plus" /></span>
+                    <span style="display: none;"><Icon icon="check" /></span>
+                </button>
             </div>
+            <h1>{product_name}</h1>
         </div>
     </div>
 </Fragment>
 
 <style>
     button {
+        background: transparent;
         border: none;
         border-radius: var(--button-border-radius);
         cursor: pointer;
         font-size: var(--button-font-size);
         padding: var(--button-padding);
+    }
+
+    h1 {
+        background-color: light-dark(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2));
+        border-radius: var(--border-radius-small);
+        overflow: hidden;
+        text-align: center;
         width: 100%;
     }
 
-    button:first-of-type {
-        background-color: light-dark(#409eff, #3178c6);
+    .add-to-cart-button span:first-child,
+    .add-to-cart-button span:last-child {
+        opacity: 0;
     }
 
-    button:last-of-type {
-        background-color: light-dark(#41b883, #1f883d);
+    .like-button {
+        opacity: 0.1;
     }
 
     .product-card {
@@ -44,27 +63,15 @@ const { product_name } = Astro.props
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        justify-content: end;
         min-width: var(--card-size);
-        min-height: var(--card-size);
+        height: var(--card-size);
         position: relative;
         overflow: hidden;
     }
 
-    .product-card > * {
-        background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
-        border-radius: inherit;
-        overflow: hidden;
-        text-align: center;
-        width: 100%;
-    }
-
     .product-card-actions {
-        cursor: default;
         display: flex;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
+        justify-content: space-between;
         width: 100%;
     }
 
@@ -72,29 +79,83 @@ const { product_name } = Astro.props
         align-items: center;
         display: flex;
         flex-direction: column;
-        width: 100%;
+        justify-content: space-between;
+        height: 100%;
     }
 
     .product-card-content > h1 {
         padding: var(--spacing-small);
     }
 
-    .product-card:hover .product-card-actions {
-        max-height: calc(2rem + var(--spacing-small));
-        opacity: 1;
-        transition-delay: 0.05s;
-    }
-
     /* Pseudo-classes */
 
-    button:hover {
-        filter: brightness(var(--button-hover-brightness));
+    .like-button:hover {
+        filter: drop-shadow(0 0 20px #f00);
+    }
+
+    .add-to-cart-button:hover {
+        filter: drop-shadow(0 0 20px light-dark(#fff, #000));
+    }
+
+    .product-card:hover .like-button,
+    .product-card:hover .add-to-cart-button span:first-child {
+        opacity: 1;
+    }
+
+    .product-card:hover h1 {
+        background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
+        border-radius: 0;
     }
 
     @media screen and (width <= 850px) {
-        button,
         h1 {
             font-size: 0.75rem;
         }
     }
+
+    @media screen and (width <= 320px) {
+        .product-card {
+            min-width: 300px;
+            min-height: 300px;
+        }
+    }
 </style>
+
+<script type="module" is:inline>
+    if (!window.cartButtonScriptLoaded) {
+        window.cartButtonScriptLoaded = true
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const itemCount = document.getElementById('item-count')
+
+            document.addEventListener('click', (event) => {
+                const cartButton = event.target.closest('.add-to-cart-button')
+                if (!cartButton) return
+
+                itemCount.textContent = Number(itemCount.textContent) + 1
+                animateCartButton(cartButton)
+            })
+        })
+    }
+
+    // Function to handle the cart button animation
+    function animateCartButton(cartButton) {
+        const cartIcon = cartButton.querySelector('span:first-child')
+        const checkIcon = cartButton.querySelector('span:last-child')
+
+        cartIcon.style.display = 'none'
+        checkIcon.style.opacity = 1
+        checkIcon.style.display = 'flex'
+
+        let timeout = 2000
+
+        setTimeout(() => {
+            checkIcon.style.opacity = 0
+        }, timeout + 250)
+
+        setTimeout(() => {
+            checkIcon.style.display = 'none'
+            cartIcon.style.display = 'flex'
+        }, timeout + 500)
+    }
+</script>
