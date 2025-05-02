@@ -22,7 +22,7 @@ const { title } = Astro.props
     <body>
         <img id="background" src="background.svg" fetchpriority="high" />
         <Header title={title} />
-        <slot />
+        <main><slot /></main>
         <Footer />
     </body>
 </html>
@@ -36,10 +36,6 @@ const { title } = Astro.props
     }
 
     body {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-large);
         background-color: light-dark(rgb(255 255 255 / 0.5), rgb(0 0 0 / 0.5));
         background-image:
             radial-gradient(rgb(128 128 128 / 0.05) 1px, transparent 1px),
@@ -48,6 +44,19 @@ const { title } = Astro.props
             0 0,
             5px 5px;
         background-size: 10px 10px;
+    }
+
+    body,
+    main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-large);
+    }
+
+    main {
+        margin-top: calc(var(--spacing-large) + 2rem);
+        width: 100%;
     }
 
     #background {
