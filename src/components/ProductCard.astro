@@ -114,6 +114,8 @@ const { product_name } = Astro.props
 </style>
 
 <script type="module" is:inline>
+    const header = document.querySelector('header')
+
     if (!window.cartButtonScriptLoaded) {
         window.cartButtonScriptLoaded = true
 
@@ -123,8 +125,7 @@ const { product_name } = Astro.props
             document.addEventListener('click', (event) => {
                 const cartButton = event.target.closest('.add-to-cart-button')
                 if (!cartButton) return
-                const header = document.querySelector('header')
-                header.style.position = 'sticky'
+                header.classList.toggle('show')
 
                 itemCount.textContent = Number(itemCount.textContent) + 1
                 animateProductCardCart(cartButton)
@@ -159,13 +160,11 @@ const { product_name } = Astro.props
 
     // Function to handle the cart animation
     function animateHeaderCart() {
-        const header = document.querySelector('header')
         const headerCartButton = document.getElementById('header-cart')
         headerCartButton.classList.add('tada')
 
         setTimeout(() => {
             headerCartButton.classList.remove('tada')
-            header.style.position = 'fixed'
         }, 1500)
     }
 </script>

@@ -94,7 +94,7 @@ const { title } = Astro.props
 </style>
 
 <script type="module" is:inline>
-    const header = document.getElementById('header')
+    const header = document.querySelector('header')
 
     const showAdminLink = () => {
         if (
