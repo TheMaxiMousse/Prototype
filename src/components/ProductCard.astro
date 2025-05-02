@@ -125,7 +125,7 @@ const { product_name } = Astro.props
             document.addEventListener('click', (event) => {
                 const cartButton = event.target.closest('.add-to-cart-button')
                 if (!cartButton) return
-                header.classList.toggle('show')
+                header.classList.add('show')
 
                 itemCount.textContent = Number(itemCount.textContent) + 1
                 animateProductCardCart(cartButton)
