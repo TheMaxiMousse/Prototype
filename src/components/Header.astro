@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro'
 const { title } = Astro.props
 ---
 
-<header>
+<header style="top: 0; z-index: 1;">
     <a href="index.html" title="Home">
         <Icon icon="home" />
         <h1>{title}</h1>
@@ -23,7 +23,7 @@ const { title } = Astro.props
                     <Icon icon="mail" />
                 </a>
             </li>
-            <li>
+            <li id="header-cart">
                 <a href="cart.html" title="Your cart">
                     <Icon icon="shopping-cart" />
                     <span id="item-count"></span>
