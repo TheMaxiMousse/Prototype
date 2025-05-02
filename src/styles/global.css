@@ -29,17 +29,7 @@
     Product card sizes for different screen widths.
     Use these to ensure cards are responsive and maintain a consistent size across the UI.
      */
-    --card-size: clamp(175px, 30vw, 350px);
-
-    /*
-    Define button styles for consistent appearance across the UI.
-    Use these variables to maintain a cohesive design for buttons.
-     */
-    --button-background: var(--color-primary);
-    --button-padding: var(--spacing-small);
-    --button-font-size: 1rem;
-    --button-border-radius: var(--border-radius-small);
-    --button-hover-brightness: 1.25;
+    --card-size: clamp(150px, calc(50svw - var(--spacing-small)), 350px);
 }
 
 * {
@@ -57,19 +47,37 @@ svg {
 }
 
 button {
-    padding: var(--spacing-small);
     background-color: var(--color-primary);
     border: none;
     border-radius: var(--border-radius-small);
     cursor: pointer;
+    font-size: 1rem;
+    padding: var(--spacing-small);
+}
+
+button[type='submit'] {
+    margin-top: var(--spacing-medium);
+    font-size: large;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-small);
 }
 
 input {
     background: transparent;
     border: 1px solid var(--color-primary);
-    border-radius: 4px;
-    padding: var(--spacing-small);
+    border-radius: var(--border-radius-small);
     flex: 1;
+    font-size: large;
+    padding: var(--spacing-small);
+    padding: calc(1.5 * var(--spacing-small));
+}
+
+ul {
+    list-style: none;
 }
 
 svg {
@@ -79,12 +87,34 @@ svg {
 
 /* Pseudo-classes */
 
+*:focus {
+    outline: none;
+}
+
 a:hover,
 a:hover svg {
     color: light-dark(#333, #ccc);
     filter: drop-shadow(0 0 20px light-dark(#999, #777));
 }
 
+button:focus-visible {
+    background: var(--color-secondary);
+}
+
 button:hover {
     background-color: var(--color-secondary);
+}
+
+input:focus {
+    border-color: var(--color-secondary);
+}
+
+input:user-valid {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+input:user-invalid {
+    background-color: var(--color-error);
+    border-color: var(--color-error);
 }

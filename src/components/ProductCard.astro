@@ -33,11 +33,6 @@ const { product_name } = Astro.props
 <style>
     button {
         background: none;
-        border: none;
-        border-radius: var(--button-border-radius);
-        cursor: pointer;
-        font-size: var(--button-font-size);
-        padding: var(--button-padding);
     }
 
     h1 {
@@ -114,13 +109,6 @@ const { product_name } = Astro.props
     @media screen and (width <= 850px) {
         h1 {
             font-size: 0.75rem;
-        }
-    }
-
-    @media screen and (width <= 320px) {
-        .product-card {
-            min-width: 300px;
-            min-height: 300px;
         }
     }
 </style>
