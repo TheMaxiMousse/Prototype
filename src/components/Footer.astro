@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import Icon from '../components/Icon.astro'
 
 import { SITE_NAME } from '../config.js'
 
@@ -12,20 +13,39 @@ const yearString =
 ---
 
 <footer>
-    <span>{SITE_NAME} &copy; {yearString}</span>
-    <span>Licensed under the MIT License</span>
+    <div>
+        <span>{SITE_NAME} &copy; {yearString}</span>
+        <span>Licensed under the MIT License</span>
+    </div>
+    <ul>
+        <li><a href="about.html" title="About"><Icon icon="info" /></a></li>
+        <li>
+            <a href="contact.html" title="Contact us">
+                <Icon icon="mail" />
+            </a>
+        </li>
+    </ul>
 </footer>
 
 <style>
     footer {
-        align-self: center;
+        flex-direction: column;
+    }
+
+    footer > div {
         display: flex;
         gap: var(--spacing-small);
         text-align: center;
     }
 
+    footer > ul {
+        display: flex;
+        gap: var(--spacing-medium);
+        justify-content: center;
+    }
+
     @media screen and (width<=850px) {
-        footer {
+        footer > div {
             flex-direction: column;
             font-size: 1rem;
             gap: 0;

@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro'
 const { title } = Astro.props
 ---
 
-<header>
+<header class="show">
     <a href="index.html" title="Home">
         <Icon icon="home" />
         <h1>{title}</h1>
@@ -17,13 +17,7 @@ const { title } = Astro.props
                     <Icon icon="admin" />
                 </a>
             </li>
-            <li><a href="about.html" title="About"><Icon icon="info" /></a></li>
-            <li>
-                <a href="contact.html" title="Contact us">
-                    <Icon icon="mail" />
-                </a>
-            </li>
-            <li>
+            <li id="header-cart">
                 <a href="cart.html" title="Your cart">
                     <Icon icon="shopping-cart" />
                     <span id="item-count"></span>
@@ -47,8 +41,20 @@ const { title } = Astro.props
         );
         display: flex;
         justify-content: space-between;
+        position: fixed;
+        transition: transform 0.5s ease-in-out;
         white-space: nowrap;
         width: 100%;
+        z-index: 1;
+    }
+
+    header.hide {
+        transform: translateY(-100%);
+    }
+
+    header.show {
+        transform: translateY(0);
+        background-color: var(--color-primary);
     }
 
     header > a {
@@ -88,7 +94,9 @@ const { title } = Astro.props
 </style>
 
 <script type="module" is:inline>
-    function showAdminLink() {
+    const header = document.querySelector('header')
+
+    const showAdminLink = () => {
         if (
             document.cookie.includes('loggedIn=true') &&
             document.cookie.includes('isAdmin=true')
@@ -97,9 +105,19 @@ const { title } = Astro.props
         }
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', showAdminLink)
-    } else {
-        showAdminLink()
-    }
+    document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', showAdminLink)
+        : showAdminLink()
+
+    let lastScroll = 0
+
+    window.addEventListener('scroll', () => {
+        const current = window.scrollY
+        const scrollingDown = current > lastScroll
+
+        header.classList.toggle('hide', scrollingDown && current > 0)
+        header.classList.toggle('show', !scrollingDown || current <= 0)
+
+        lastScroll = Math.max(current, 0)
+    })
 </script>

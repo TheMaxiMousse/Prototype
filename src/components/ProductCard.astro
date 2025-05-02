@@ -114,6 +114,8 @@ const { product_name } = Astro.props
 </style>
 
 <script type="module" is:inline>
+    const header = document.querySelector('header')
+
     if (!window.cartButtonScriptLoaded) {
         window.cartButtonScriptLoaded = true
 
@@ -123,15 +125,20 @@ const { product_name } = Astro.props
             document.addEventListener('click', (event) => {
                 const cartButton = event.target.closest('.add-to-cart-button')
                 if (!cartButton) return
+                header.classList.toggle('show')
 
                 itemCount.textContent = Number(itemCount.textContent) + 1
-                animateCartButton(cartButton)
+                animateProductCardCart(cartButton)
+
+                setTimeout(() => {
+                    animateHeaderCart()
+                }, 1000)
             })
         })
     }
 
     // Function to handle the cart button animation
-    function animateCartButton(cartButton) {
+    function animateProductCardCart(cartButton) {
         const cartIcon = cartButton.querySelector('span:first-child')
         const checkIcon = cartButton.querySelector('span:last-child')
 
@@ -149,5 +156,15 @@ const { product_name } = Astro.props
             checkIcon.style.display = 'none'
             cartIcon.style.display = 'flex'
         }, timeout + 500)
+    }
+
+    // Function to handle the cart animation
+    function animateHeaderCart() {
+        const headerCartButton = document.getElementById('header-cart')
+        headerCartButton.classList.add('tada')
+
+        setTimeout(() => {
+            headerCartButton.classList.remove('tada')
+        }, 1500)
     }
 </script>
