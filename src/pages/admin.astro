@@ -1,11 +1,19 @@
 ---
+import { randint } from '../utils/random.js'
 import Main from '../layouts/Main.astro'
-import products from '../assets/products.json'
-import orders from '../assets/orders.json'
+import IconCheck from '../assets/icon/check.svg'
+import IconCheckbox from '../assets/icon/checkbox.svg'
+import IconCooking from '../assets/icon/cooking-pot.svg'
+import IconOrder from '../assets/icon/order.svg'
+import IconPackage from '../assets/icon/package.svg'
+import IconX from '../assets/icon/x.svg'
 import comments from '../assets/comments.json'
+import orders from '../assets/orders.json'
+import products from '../assets/products.json'
 
 // Count the number of orders for each product
 const productOrders: Record<number, number> = {}
+
 orders.forEach((order) => {
     order.order.forEach((product) => {
         const productId: number = product.product_id
@@ -37,14 +45,10 @@ orders.forEach((order) => {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>
-                                    {product.status == 'Available'
-                                        ? '✅'
-                                        : product.status}
+                                    {product.status == 'Available' ? <IconCheck /> : product.status}
                                 </td>
                                 <td>{product.product_name}</td>
-                                <td>
-                                    {productOrders[product.product_id] || 0}
-                                </td>
+                                <td>{productOrders[product.product_id] || 0}</td>
                                 <td class="edit-product">✏️</td>
                             </tr>
                         ))
@@ -56,30 +60,59 @@ orders.forEach((order) => {
             <h2>Current Orders</h2>
             <div id="orders">
                 {
-                    orders.map((order) => (
-                        <div class="order-card">
-                            <span style="grid-area: order-id;">
-                                #{order.order_id}
-                            </span>
-                            <span style="grid-area: order-date;">
-                                {order.date}
-                            </span>
-                            <span style="grid-area: customer-name;">
-                                Customer: {order.customer_name}
-                            </span>
-                            <span style="grid-area: order-products;">
-                                <span>Order:</span>
-                                <ul class="order-products">
-                                    {order.order.map((product) => (
-                                        <li>{product.product_name}</li>
-                                    ))}
-                                </ul>
-                            </span>
-                            <span style="grid-area: transaction-status;">
-                                Transaction Status: {order.transaction_status}
-                            </span>
-                        </div>
-                    ))
+                    orders.map((order) => {
+                        const orderStatus = randint(0, 4)
+
+                        return (
+                            <div class="order-card">
+                                <span style="grid-area: order-id;">#{order.order_id}</span>
+                                <span style="grid-area: order-date;">{order.date}</span>
+                                <span style="grid-area: customer-name;">
+                                    Customer: {order.customer_name}
+                                </span>
+                                <span style="grid-area: order-products;">
+                                    <span>Order:</span>
+                                    <ul class="order-products">
+                                        {order.order.map((product) => (
+                                            <li>{product.product_name}</li>
+                                        ))}
+                                    </ul>
+                                </span>
+                                <span style="grid-area: transaction-status;">
+                                    Transaction Status:
+                                    <ul class="transaction-status">
+                                        <li
+                                            title="Order Placed"
+                                            class={orderStatus == 0 ? 'active' : ''}
+                                        >
+                                            <IconOrder />
+                                        </li>
+                                        <li
+                                            title="In Preparation"
+                                            class={orderStatus == 1 ? 'active' : ''}
+                                        >
+                                            <IconCooking />
+                                        </li>
+                                        <li title="Ready" class={orderStatus == 2 ? 'active' : ''}>
+                                            <IconPackage />
+                                        </li>
+                                        <li
+                                            title="Completed"
+                                            class={orderStatus == 3 ? 'active' : ''}
+                                        >
+                                            <IconCheckbox />
+                                        </li>
+                                        <li
+                                            title="Cancelled"
+                                            class={orderStatus == 4 ? 'active' : ''}
+                                        >
+                                            <IconX />
+                                        </li>
+                                    </ul>
+                                </span>
+                            </div>
+                        )
+                    })
                 }
             </div>
         </span>
@@ -100,29 +133,22 @@ orders.forEach((order) => {
             <h2>Estimated Gross Income</h2>
             <h3>
                 Total Gross Income: CA${
-                    orders.reduce(
-                        (total, order) => total + order.total_price,
-                        0
-                    )
+                    orders.reduce((total, order) => total + order.total_price, 0)
                 }
             </h3>
             <h3>
                 Average Order Value: CA${
                     orders.length
                         ? (
-                              orders.reduce(
-                                  (total, order) => total + order.total_price,
-                                  0
-                              ) / orders.length
+                              orders.reduce((total, order) => total + order.total_price, 0) /
+                              orders.length
                           ).toFixed(2)
                         : 0
                 }
             </h3>
             <h3>Number of Orders: {orders.length}</h3>
             <h3>
-                Number of Customers: {
-                    new Set(orders.map((order) => order.customer_name)).size
-                }
+                Number of Customers: {new Set(orders.map((order) => order.customer_name)).size}
             </h3>
         </span>
     </div>
@@ -139,8 +165,20 @@ orders.forEach((order) => {
         text-align: center;
     }
 
-    ul {
+    ul.order-products {
         padding-left: var(--spacing-medium);
+    }
+
+    ul.transaction-status {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    ul.transaction-status > li > svg {
+        color: var(--color-secondary);
+    }
+    ul.transaction-status > li.active > svg {
+        color: var(--color-primary);
     }
 
     .comment-card {

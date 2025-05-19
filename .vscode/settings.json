@@ -1,24 +1,7 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
     "editor.insertSpaces": true,
-    "editor.tabSize": 4,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "emeraldwalk.runonsave": {
-        "commands": [
-            {
-                "match": "\\.(js|ts|vue|json|css|scss|md|html)$",
-                "cmd": "npx prettier --write \"${file}\"",
-                "autoShowOutputPanel": "error"
-            }
-        ]
-    },
-    "[yaml]": {
-        "editor.tabSize": 2
-    },
-    "[astro]": {
-        "editor.defaultFormatter": "astro-build.astro-vscode"
+    "triggerTaskOnSave.tasks": {
+        "Prettify Current File": ["*"]
     }
 }

@@ -9,7 +9,7 @@
             "extensions": [
                 "esbenp.prettier-vscode",
                 "astro-build.astro-vscode",
-                "emeraldwalk.RunOnSave"
+                "gruntfuggly.triggertaskonsave"
             ]
         }
     },
