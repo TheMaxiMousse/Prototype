@@ -11,7 +11,7 @@ const orderStatus = randint(0, 4)
 ---
 
 <Fragment>
-    <div class="order-card">
+    <div>
         <span style="grid-area: order-id;">#{order.order_id}</span>
         <span style="grid-area: order-date;">{order.date}</span>
         <span style="grid-area: customer-name;">Customer: {order.customer_name}</span>
@@ -45,9 +45,9 @@ const orderStatus = randint(0, 4)
 </Fragment>
 
 <style>
-    .order-card {
+    div {
         align-items: center;
-        background-color: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
+        background-color: light-dark(rgb(0 0 0 / 10%), rgb(255 255 255 / 10%));
         border-radius: var(--border-radius-small);
         display: grid;
         grid-template:
@@ -60,9 +60,17 @@ const orderStatus = randint(0, 4)
         width: clamp(250px, 30%, var(--card-size));
     }
 
+    div:hover {
+        background-color: light-dark(rgb(0 0 0 / 30%), rgb(255 255 255 / 20%));
+    }
+
     ul.transaction-status {
         display: flex;
         justify-content: space-between;
+    }
+
+    ul.transaction-status > li {
+        cursor: pointer;
     }
 
     ul.transaction-status > li > svg {
@@ -72,29 +80,10 @@ const orderStatus = randint(0, 4)
         color: var(--color-primary);
     }
 
-    .order-card {
-        align-items: center;
-        background-color: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
-        border-radius: var(--border-radius-small);
-        display: grid;
-        grid-template:
-            'order-id order-date' 1fr
-            'customer-name customer-name' 1fr
-            'order-products order-products' 1fr
-            'transaction-status transaction-status' 1fr / 1fr 1fr;
-        overflow: auto;
-        padding: 0 var(--spacing-small);
-        width: clamp(250px, 30%, var(--card-size));
-    }
-
     .product-details {
         display: flex;
         gap: var(--spacing-medium);
         justify-content: space-between;
         width: 100%;
-    }
-
-    .order-card:hover {
-        background-color: light-dark(rgb(0 0 0 / 0.3), rgb(255 255 255 / 0.2));
     }
 </style>
