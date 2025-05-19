@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Astro Dev Server",
+            "type": "shell",
+            "command": "npm run dev",
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "presentation": {
+                "clear": true,
+                "close": true,
+                "panel": "dedicated",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Prettify All Files",
+            "type": "shell",
+            "command": "npx prettier --write .",
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "presentation": {
+                "close": true
+            }
+        },
+        {
+            "label": "Prettify Current File",
+            "type": "shell",
+            "command": "npx prettier --write ${file}",
+            "presentation": {
+                "showReuseMessage": false
+            }
+        }
+    ]
+}
