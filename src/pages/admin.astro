@@ -1,12 +1,7 @@
 ---
-import { randint } from '../utils/random.js'
 import Main from '../layouts/Main.astro'
 import IconCheck from '../assets/icon/check.svg'
-import IconCheckbox from '../assets/icon/checkbox.svg'
-import IconCooking from '../assets/icon/cooking-pot.svg'
-import IconOrder from '../assets/icon/order.svg'
-import IconPackage from '../assets/icon/package.svg'
-import IconX from '../assets/icon/x.svg'
+import OrderCard from '../components/OrderCard.astro'
 import comments from '../assets/comments.json'
 import orders from '../assets/orders.json'
 import products from '../assets/products.json'
@@ -59,61 +54,7 @@ orders.forEach((order) => {
         <span>
             <h2>Current Orders</h2>
             <div id="orders">
-                {
-                    orders.map((order) => {
-                        const orderStatus = randint(0, 4)
-
-                        return (
-                            <div class="order-card">
-                                <span style="grid-area: order-id;">#{order.order_id}</span>
-                                <span style="grid-area: order-date;">{order.date}</span>
-                                <span style="grid-area: customer-name;">
-                                    Customer: {order.customer_name}
-                                </span>
-                                <span style="grid-area: order-products;">
-                                    <span>Order:</span>
-                                    <ul class="order-products">
-                                        {order.order.map((product) => (
-                                            <li>{product.product_name}</li>
-                                        ))}
-                                    </ul>
-                                </span>
-                                <span style="grid-area: transaction-status;">
-                                    Transaction Status:
-                                    <ul class="transaction-status">
-                                        <li
-                                            title="Cancelled"
-                                            class={orderStatus == 0 ? 'active' : ''}
-                                        >
-                                            <IconX />
-                                        </li>
-                                        <li
-                                            title="Order Placed"
-                                            class={orderStatus == 1 ? 'active' : ''}
-                                        >
-                                            <IconOrder />
-                                        </li>
-                                        <li
-                                            title="In Preparation"
-                                            class={orderStatus == 2 ? 'active' : ''}
-                                        >
-                                            <IconCooking />
-                                        </li>
-                                        <li title="Ready" class={orderStatus == 3 ? 'active' : ''}>
-                                            <IconPackage />
-                                        </li>
-                                        <li
-                                            title="Completed"
-                                            class={orderStatus == 4 ? 'active' : ''}
-                                        >
-                                            <IconCheckbox />
-                                        </li>
-                                    </ul>
-                                </span>
-                            </div>
-                        )
-                    })
-                }
+                {orders.map((order) => <OrderCard order={order} />)}
             </div>
         </span>
         <span id="comments">
@@ -165,22 +106,6 @@ orders.forEach((order) => {
         text-align: center;
     }
 
-    ul.order-products {
-        padding-left: var(--spacing-medium);
-    }
-
-    ul.transaction-status {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    ul.transaction-status > li > svg {
-        color: var(--color-secondary);
-    }
-    ul.transaction-status > li.active > svg {
-        color: var(--color-primary);
-    }
-
     .comment-card {
         background-color: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
         border-radius: var(--border-radius-small);
@@ -191,28 +116,6 @@ orders.forEach((order) => {
 
     .edit-product {
         cursor: pointer;
-    }
-
-    .order-card {
-        align-items: center;
-        background-color: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
-        border-radius: var(--border-radius-small);
-        display: grid;
-        grid-template:
-            'order-id order-date' 1fr
-            'customer-name customer-name' 1fr
-            'order-products order-products' 1fr
-            'transaction-status transaction-status' 1fr / 1fr 1fr;
-        overflow: auto;
-        padding: 0 var(--spacing-small);
-        width: clamp(250px, 30%, var(--card-size));
-    }
-
-    .product-details {
-        display: flex;
-        gap: var(--spacing-medium);
-        justify-content: space-between;
-        width: 100%;
     }
 
     #admin-panel {
@@ -257,7 +160,6 @@ orders.forEach((order) => {
     h3:hover,
     tbody > tr:hover,
     .comment-card:hover,
-    .order-card:hover,
     #admin-panel > span:hover {
         background-color: light-dark(rgb(0 0 0 / 0.3), rgb(255 255 255 / 0.2));
     }
