@@ -49,30 +49,28 @@ import Main from '../layouts/Main.astro'
         console.log('User is not logged in')
     }
 
-    document
-        .getElementById('login-form')
-        .addEventListener('submit', function (event) {
-            event.preventDefault()
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+        event.preventDefault()
 
-            const email = this.email.value
-            const password = this.password.value
-            const isAdmin = this.admin.checked
+        const email = this.email.value
+        const password = this.password.value
+        const isAdmin = this.admin.checked
 
-            if (email && password) {
-                console.log('User logged in successfully')
-                document.cookie = 'loggedIn=true; path=/'
+        if (email && password) {
+            console.log('User logged in successfully')
+            document.cookie = 'loggedIn=true; path=/'
 
-                if (isAdmin) {
-                    console.log('User is an admin')
-                    document.cookie = 'isAdmin=true; path=/'
-                } else {
-                    console.log('User is not an admin')
-                    document.cookie = 'isAdmin=false; path=/'
-                }
-
-                window.location.reload()
+            if (isAdmin) {
+                console.log('User is an admin')
+                document.cookie = 'isAdmin=true; path=/'
             } else {
-                console.log('Invalid login credentials')
+                console.log('User is not an admin')
+                document.cookie = 'isAdmin=false; path=/'
             }
-        })
+
+            window.location.reload()
+        } else {
+            console.log('Invalid login credentials')
+        }
+    })
 </script>

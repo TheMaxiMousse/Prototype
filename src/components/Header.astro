@@ -97,10 +97,7 @@ const { title } = Astro.props
     const header = document.querySelector('header')
 
     const showAdminLink = () => {
-        if (
-            document.cookie.includes('loggedIn=true') &&
-            document.cookie.includes('isAdmin=true')
-        ) {
+        if (document.cookie.includes('loggedIn=true') && document.cookie.includes('isAdmin=true')) {
             document.getElementById('admin-link').style.display = 'list-item'
         }
     }

@@ -30,10 +30,8 @@ const { placeholder } = Astro.props
         const products = document.querySelectorAll('.product-card')
 
         products.forEach((product) => {
-            const name =
-                product.querySelector('h1')?.textContent.toLowerCase() || ''
-            product.style.display =
-                query && name.includes(query) ? 'flex' : query ? 'none' : 'flex'
+            const name = product.querySelector('h1')?.textContent.toLowerCase() || ''
+            product.style.display = query && name.includes(query) ? 'flex' : query ? 'none' : 'flex'
         })
     }
 
