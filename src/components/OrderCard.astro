@@ -18,7 +18,7 @@ const orderStatus = randint(0, 4)
         <span style="grid-area: order-products;">
             <span>Order:</span>
             <ul class="order-products">
-                <li>{order.order.map((product) => <span>{product.product_name}</span>)}</li>
+                {order.order.map((product) => <li>{product.product_name}</li>)}
             </ul>
         </span>
         <span style="grid-area: transaction-status;">
@@ -60,8 +60,17 @@ const orderStatus = randint(0, 4)
         width: clamp(250px, 30%, var(--card-size));
     }
 
+    div > span:not(:last-child) {
+        border-bottom: 2px solid #888;
+    }
+
     div:hover {
         background-color: light-dark(rgb(0 0 0 / 30%), rgb(255 255 255 / 20%));
+    }
+
+    ul.order-products {
+        list-style: square;
+        padding-left: 1.5em;
     }
 
     ul.transaction-status {
@@ -76,14 +85,28 @@ const orderStatus = randint(0, 4)
     ul.transaction-status > li > svg {
         color: var(--color-secondary);
     }
+
     ul.transaction-status > li.active > svg {
         color: var(--color-primary);
     }
 
-    .product-details {
-        display: flex;
-        gap: var(--spacing-medium);
-        justify-content: space-between;
-        width: 100%;
+    ul.transaction-status > li:not(.active):hover > svg {
+        filter: brightness(1.2);
     }
 </style>
+
+<script type="module" is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.transaction-status').forEach((statusList) => {
+            statusList.addEventListener('click', (event) => {
+                const li = event.target.closest('li')
+                if (!li || !statusList.contains(li)) return
+
+                statusList
+                    .querySelectorAll('li.active')
+                    .forEach((el) => el.classList.remove('active'))
+                li.classList.add('active')
+            })
+        })
+    })
+</script>
