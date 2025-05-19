@@ -82,31 +82,31 @@ orders.forEach((order) => {
                                     Transaction Status:
                                     <ul class="transaction-status">
                                         <li
-                                            title="Order Placed"
+                                            title="Cancelled"
                                             class={orderStatus == 0 ? 'active' : ''}
+                                        >
+                                            <IconX />
+                                        </li>
+                                        <li
+                                            title="Order Placed"
+                                            class={orderStatus == 1 ? 'active' : ''}
                                         >
                                             <IconOrder />
                                         </li>
                                         <li
                                             title="In Preparation"
-                                            class={orderStatus == 1 ? 'active' : ''}
+                                            class={orderStatus == 2 ? 'active' : ''}
                                         >
                                             <IconCooking />
                                         </li>
-                                        <li title="Ready" class={orderStatus == 2 ? 'active' : ''}>
+                                        <li title="Ready" class={orderStatus == 3 ? 'active' : ''}>
                                             <IconPackage />
                                         </li>
                                         <li
                                             title="Completed"
-                                            class={orderStatus == 3 ? 'active' : ''}
-                                        >
-                                            <IconCheckbox />
-                                        </li>
-                                        <li
-                                            title="Cancelled"
                                             class={orderStatus == 4 ? 'active' : ''}
                                         >
-                                            <IconX />
+                                            <IconCheckbox />
                                         </li>
                                     </ul>
                                 </span>
