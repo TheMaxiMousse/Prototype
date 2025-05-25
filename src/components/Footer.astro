@@ -6,10 +6,7 @@ import { SITE_NAME } from '../config.js'
 
 const baseYear = 2025
 const currentYear = new Date().getFullYear()
-const yearString =
-    currentYear === baseYear
-        ? baseYear.toString()
-        : `${baseYear}-${currentYear}`
+const yearString = currentYear === baseYear ? baseYear.toString() : `${baseYear}-${currentYear}`
 ---
 
 <footer>
@@ -29,11 +26,7 @@ const yearString =
             </a>
         </li>
         <li>
-            <a
-                href="https://github.com/TheChocoMax"
-                target="_blank"
-                title="GitHub"
-            >
+            <a href="https://github.com/TheChocoMax" target="_blank" title="GitHub">
                 <Icon icon="github" />
             </a>
         </li>

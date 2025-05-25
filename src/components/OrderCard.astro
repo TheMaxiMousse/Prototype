@@ -1,0 +1,112 @@
+---
+import { randint } from '../utils/random'
+import IconCheckbox from '../assets/icon/checkbox.svg'
+import IconCooking from '../assets/icon/cooking-pot.svg'
+import IconOrder from '../assets/icon/order.svg'
+import IconPackage from '../assets/icon/package.svg'
+import IconX from '../assets/icon/x.svg'
+
+const order = Astro.props.order
+const orderStatus = randint(0, 4)
+---
+
+<Fragment>
+    <div>
+        <span style="grid-area: order-id;">#{order.order_id}</span>
+        <span style="grid-area: order-date;">{order.date}</span>
+        <span style="grid-area: customer-name;">Customer: {order.customer_name}</span>
+        <span style="grid-area: order-products;">
+            <span>Order:</span>
+            <ul class="order-products">
+                {order.order.map((product) => <li>{product.product_name}</li>)}
+            </ul>
+        </span>
+        <span style="grid-area: transaction-status;">
+            Transaction Status:
+            <ul class="transaction-status">
+                <li title="Cancelled" class={orderStatus == 0 ? 'active' : ''}>
+                    <IconX />
+                </li>
+                <li title="Order Placed" class={orderStatus == 1 ? 'active' : ''}>
+                    <IconOrder />
+                </li>
+                <li title="In Preparation" class={orderStatus == 2 ? 'active' : ''}>
+                    <IconCooking />
+                </li>
+                <li title="Ready" class={orderStatus == 3 ? 'active' : ''}>
+                    <IconPackage />
+                </li>
+                <li title="Completed" class={orderStatus == 4 ? 'active' : ''}>
+                    <IconCheckbox />
+                </li>
+            </ul>
+        </span>
+    </div>
+</Fragment>
+
+<style>
+    div {
+        align-items: center;
+        background-color: light-dark(rgb(0 0 0 / 10%), rgb(255 255 255 / 10%));
+        border-radius: var(--border-radius-small);
+        display: grid;
+        grid-template:
+            'order-id order-date' 1fr
+            'customer-name customer-name' 1fr
+            'order-products order-products' 1fr
+            'transaction-status transaction-status' 1fr / 1fr 1fr;
+        overflow: auto;
+        padding: 0 var(--spacing-small);
+        width: clamp(250px, 30%, var(--card-size));
+    }
+
+    div > span:not(:last-child) {
+        border-bottom: 2px solid #888;
+    }
+
+    div:hover {
+        background-color: light-dark(rgb(0 0 0 / 30%), rgb(255 255 255 / 20%));
+    }
+
+    ul.order-products {
+        list-style: square;
+        padding-left: 1.5em;
+    }
+
+    ul.transaction-status {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    ul.transaction-status > li {
+        cursor: pointer;
+    }
+
+    ul.transaction-status > li > svg {
+        color: var(--color-secondary);
+    }
+
+    ul.transaction-status > li.active > svg {
+        color: var(--color-primary);
+    }
+
+    ul.transaction-status > li:not(.active):hover > svg {
+        filter: brightness(1.2);
+    }
+</style>
+
+<script type="module" is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.transaction-status').forEach((statusList) => {
+            statusList.addEventListener('click', (event) => {
+                const li = event.target.closest('li')
+                if (!li || !statusList.contains(li)) return
+
+                statusList
+                    .querySelectorAll('li.active')
+                    .forEach((el) => el.classList.remove('active'))
+                li.classList.add('active')
+            })
+        })
+    })
+</script>
