@@ -11,13 +11,13 @@ const { product_name } = Astro.props
     <div class="product-card" style=`background-image: url("product/${product_id}.png");`>
         <div class="product-card-content">
             <div class="product-card-actions">
-                <button class="like-button">
+                <!-- <button class="like-button">
                     <Icon icon={randint(0, 1) === 0 ? 'heart' : 'heart-filled'} />
                 </button>
                 <button class="add-to-cart-button">
                     <span><Icon icon="shopping-cart-plus" /></span>
                     <span style="display: none;"><Icon icon="check" /></span>
-                </button>
+                </button> -->
             </div>
             <h1>{product_name}</h1>
         </div>
