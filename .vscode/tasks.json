@@ -2,6 +2,15 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Delete old Git branches",
+            "type": "shell",
+            "command": "git fetch --prune && git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D",
+            "presentation": {
+                "showReuseMessage": false
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "Astro Dev Server",
             "type": "shell",
             "command": "npm run dev",
@@ -13,7 +22,8 @@
                 "close": true,
                 "panel": "dedicated",
                 "showReuseMessage": false
-            }
+            },
+            "problemMatcher": []
         },
         {
             "label": "Prettify All Files",
@@ -24,7 +34,8 @@
             },
             "presentation": {
                 "close": true
-            }
+            },
+            "problemMatcher": []
         },
         {
             "label": "Prettify Current File",
@@ -32,7 +43,8 @@
             "command": "npx prettier --write ${file}",
             "presentation": {
                 "showReuseMessage": false
-            }
+            },
+            "problemMatcher": []
         }
     ]
 }
