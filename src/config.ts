@@ -1,1 +1,1 @@
-export const SITE_NAME = 'ChocoMax'
+export const SITE_NAME = "Maxi'mousse"
