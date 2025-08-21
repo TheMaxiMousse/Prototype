@@ -20,7 +20,7 @@ const { title } = Astro.props
         <title>{SITE_NAME} - {title}</title>
     </head>
     <body>
-        <img id="background" src="background.svg" loading="eager" />
+        <!-- <img id="background" src="background.svg" loading="eager" /> -->
         <Header title={title} />
         <main><slot /></main>
         <Footer />
@@ -28,6 +28,29 @@ const { title } = Astro.props
 </html>
 
 <style>
+    body {
+        background-color: light-dark(#fcf7f3, #241b16);
+        padding: 0 calc(var(--spacing-large) * 4);
+    }
+
+    @media screen and (max-width: 1200px) {
+        body {
+            padding: 0 calc(var(--spacing-large) * 3);
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        body {
+            padding: 0 calc(var(--spacing-large) * 2);
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        body {
+            padding: 0 var(--spacing-medium);
+        }
+    }
+
     body,
     html {
         height: 100svh;
