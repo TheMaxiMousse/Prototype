@@ -47,12 +47,22 @@ svg {
 }
 
 button {
-    background-color: var(--color-primary);
+    background-color: light-dark(#e7d7c0, #e4d0b8);
+    font-weight: bold;
     border: none;
     border-radius: var(--border-radius-small);
-    cursor: pointer;
     font-size: 1rem;
     padding: var(--spacing-small);
+}
+
+button:disabled {
+    background-color: light-dark(#ccc, #555);
+    color: light-dark(#666, #aaa);
+    cursor: not-allowed;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
 }
 
 button[type='submit'] {
@@ -101,7 +111,7 @@ button:focus-visible {
     background: var(--color-secondary);
 }
 
-button:hover {
+button:hover:not(:disabled) {
     background-color: var(--color-secondary);
 }
 
