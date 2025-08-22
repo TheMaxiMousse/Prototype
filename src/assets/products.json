@@ -7,13 +7,61 @@
     },
     {
         "product_id": 7,
-        "product_name": "Pistachio Chocolate",
+        "product_name": "Pistachio Praline",
         "price": 22.0,
         "status": "Available"
     },
     {
         "product_id": 10,
         "product_name": "Madeleines",
+        "price": 11.0,
+        "status": "Available"
+    },
+    {
+        "product_id": 11,
+        "product_name": "Biscuits",
+        "price": 11.0,
+        "status": "Available"
+    },
+    {
+        "product_id": 12,
+        "product_name": "Coconut cake",
+        "price": 11.0,
+        "status": "Available"
+    },
+    {
+        "product_id": 13,
+        "product_name": "Chocolate Truffles",
+        "price": 11.0,
+        "status": "Available"
+    },
+    {
+        "product_id": 14,
+        "product_name": "Tres leches",
+        "price": 11.0,
+        "status": "Available"
+    },
+    {
+        "product_id": 15,
+        "product_name": "Flan",
+        "price": 11.0,
+        "status": "Available"
+    },
+    {
+        "product_id": 14,
+        "product_name": "Brioche",
+        "price": 11.0,
+        "status": "Available"
+    },
+    {
+        "product_id": 16,
+        "product_name": "Chocolate sweets",
+        "price": 11.0,
+        "status": "Available"
+    },
+    {
+        "product_id": 14,
+        "product_name": "Royale Chocolat",
         "price": 11.0,
         "status": "Available"
     }
