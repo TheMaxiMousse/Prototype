@@ -30,7 +30,7 @@
         "status": "Available"
     },
     {
-        "product_id": 13,
+        "product_id": 14,
         "product_name": "Chocolate Truffles",
         "price": 11.0,
         "status": "Available"
@@ -42,7 +42,7 @@
         "status": "Available"
     },
     {
-        "product_id": 15,
+        "product_id": 14,
         "product_name": "Flan",
         "price": 11.0,
         "status": "Available"
