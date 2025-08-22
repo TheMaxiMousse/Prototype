@@ -1,8 +1,14 @@
 name: Deploy static content to Pages
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+    paths:
+      - 'public/'
+      - 'src/'
+      - 'astro.config.mjs'
+      - '.github/workflows/deploy-to-pages.yml'
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
