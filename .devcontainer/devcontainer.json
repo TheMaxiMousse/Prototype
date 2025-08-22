@@ -1,6 +1,6 @@
 {
-    "name": "ChocoMax Prototype Development Container",
-    "dockerFile": "Dockerfile",
+    "name": "ChocoMax Prototype",
+    "image": "ghcr.io/TheMaxiMousse/prototype-devcontainer:latest",
     "customizations": {
         "settings": {
             "terminal.integrated.shell.linux": "/bin/bash"
