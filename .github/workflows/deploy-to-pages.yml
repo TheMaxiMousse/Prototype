@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'public/'
-      - 'src/'
+      - 'public/**'
+      - 'src/**'
       - 'astro.config.mjs'
       - '.github/workflows/deploy-to-pages.yml'
   workflow_dispatch:
